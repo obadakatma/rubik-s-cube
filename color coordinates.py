@@ -1,3 +1,5 @@
+import time
+
 import cv2 as cv
 import win32api
 
@@ -8,7 +10,7 @@ color_arr = [[], [], [],
              [], [], []]
 
 counter = 1
-capture = cv.VideoCapture(0)
+capture = cv.VideoCapture(1)
 while True:
     _, frame = capture.read()
     flip = cv.flip(frame, 1)
@@ -22,54 +24,63 @@ while True:
 
         if a < 0:
             print("clicked 1")
+            time.sleep(0.5)
             color_arr[0] = list(flip[flip.shape[1] // 2 - 150, flip.shape[0] // 2 - 150])
             counter = counter + 1
     elif state_left == a and counter == 2:
 
         if a < 0:
             print("clicked 2")
+            time.sleep(0.5)
             color_arr[1] = list(flip[flip.shape[1] // 2, flip.shape[0] // 2 - 150])
             counter = counter + 1
     elif state_left == a and counter == 3:
 
         if a < 0:
             print("clicked 3")
+            time.sleep(0.5)
             color_arr[2] = list(flip[flip.shape[1] // 2 + 150, flip.shape[0] // 2 - 150])
             counter = counter + 1
     elif state_left == a and counter == 4:
 
         if a < 0:
             print("clicked 4")
+            time.sleep(0.5)
             color_arr[3] = list(flip[flip.shape[1] // 2 - 150, flip.shape[0] // 2])
             counter = counter + 1
     elif state_left == a and counter == 5:
 
         if a < 0:
             print("clicked 5")
+            time.sleep(0.5)
             color_arr[4] = list(flip[flip.shape[1] // 2, flip.shape[0] // 2])
             counter = counter + 1
     elif state_left == a and counter == 6:
 
         if a < 0:
             print("clicked 6")
+            time.sleep(0.5)
             color_arr[5] = list(flip[flip.shape[1] // 2 + 150, flip.shape[0] // 2])
             counter = counter + 1
     elif state_left == a and counter == 7:
 
         if a < 0:
             print("clicked 7")
+            time.sleep(0.5)
             color_arr[6] = list(flip[flip.shape[1] // 2 - 150, flip.shape[0] // 2 + 150])
             counter = counter + 1
     elif state_left == a and counter == 8:
 
         if a < 0:
             print("clicked 8")
+            time.sleep(0.5)
             color_arr[7] = list(flip[flip.shape[1] // 2, flip.shape[0] // 2 + 150])
             counter = counter + 1
     elif state_left == a and counter == 9:
 
         if a < 0:
             print("clicked 9")
+            time.sleep(0.5)
             color_arr[8] = list(flip[flip.shape[1] // 2 + 150, flip.shape[0] // 2 + 150])
             counter = counter + 1
     elif state_left == a and counter == 10:
