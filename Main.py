@@ -2,8 +2,8 @@ import cv2 as cv
 import time
 import win32api
 
-import HSV_filtering as hf
-import three_by_three_cube_place as tp
+import HSV_Filtering as hf
+import ThreeByThree as Th
 
 capture = cv.VideoCapture(0)
 while True:
@@ -11,7 +11,7 @@ while True:
 
     hsv = hf.Hsv()
     main_frame = hsv.processing(hsv, frame)
-    three = tp.three(frame)
+    three = Th.Three(frame)
 
     three.rec_place(frame)
     sigma = three.standard_deviation(main_frame)

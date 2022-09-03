@@ -2,7 +2,7 @@ import cv2 as cv
 import math
 
 
-class three:
+class Three:
     def __init__(self, frame):
         self.pt1 = (frame.shape[1] // 2 - 128, frame.shape[0] // 2 - 128)
         self.pt2 = (frame.shape[1] // 2 + 128, frame.shape[0] // 2 + 128)

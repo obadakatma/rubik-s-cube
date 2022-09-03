@@ -24,24 +24,24 @@ goal = [
 ]
 
 test = [
-    [[Color.ORANGE, Color.RED, Color.BLUE],
-     [Color.YELLOW, Color.RED, Color.WHITE],
-     [Color.GREEN, Color.BLUE, Color.GREEN]],
+    [[Color.ORANGE, Color.RED, Color.GREEN],
+     [Color.YELLOW, Color.RED, Color.GREEN],
+     [Color.GREEN, Color.BLUE, Color.BLUE]],
     [[Color.YELLOW, Color.RED, Color.ORANGE],
      [Color.BLUE, Color.GREEN, Color.WHITE],
-     [Color.GREEN, Color.BLUE, Color.RED]],
+     [Color.GREEN, Color.BLUE, Color.WHITE]],
     [[Color.BLUE, Color.YELLOW, Color.WHITE],
      [Color.WHITE, Color.YELLOW, Color.GREEN],
-     [Color.RED, Color.ORANGE, Color.YELLOW]],
+     [Color.ORANGE, Color.ORANGE, Color.YELLOW]],
     [[Color.RED, Color.ORANGE, Color.RED],
      [Color.GREEN, Color.BLUE, Color.ORANGE],
-     [Color.BLUE, Color.GREEN, Color.WHITE]],
-    [[Color.WHITE, Color.ORANGE, Color.YELLOW],
-     [Color.BLUE, Color.WHITE, Color.RED],
-     [Color.WHITE, Color.YELLOW, Color.ORANGE]],
-    [[Color.GREEN, Color.YELLOW, Color.ORANGE],
-     [Color.GREEN, Color.ORANGE, Color.RED],
-     [Color.BLUE, Color.WHITE, Color.YELLOW]]
+     [Color.GREEN, Color.GREEN, Color.RED]],
+    [[Color.RED, Color.ORANGE, Color.WHITE],
+     [Color.WHITE, Color.WHITE, Color.BLUE],
+     [Color.YELLOW, Color.YELLOW, Color.WHITE]],
+    [[Color.BLUE, Color.YELLOW, Color.ORANGE],
+     [Color.WHITE, Color.ORANGE, Color.RED],
+     [Color.BLUE, Color.RED, Color.YELLOW]]
 ]
 
 
@@ -724,9 +724,6 @@ def FlipLeft(state):
                                  newState[5][1][0])
     return newState
 
-
 # for line in FlipLeft(test):
 #     for line1 in line:
 #         print(line1)
-
-
