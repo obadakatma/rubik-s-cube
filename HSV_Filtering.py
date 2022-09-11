@@ -13,7 +13,7 @@ class Hsv:
         kernal = np.ones((3, 3), np.uint8)
 
         # L_V = cv.getTrackbarPos("L-V", "red_trackbar")
-        low = np.array([0, 0, 185])
+        low = np.array([0, 0, 200])
         high = np.array([180, 255, 255])
         mask = cv.inRange(self.hsv, low, high)
         mask = cv.erode(mask, kernal)
