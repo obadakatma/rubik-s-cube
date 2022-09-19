@@ -1,0 +1,41 @@
+''This is The Variables zone 
+
+x= 75
+port_A1 = "1A"
+port_D1 = "1D"
+''End Variables
+
+
+
+Sub rotateClockwise
+  
+  
+EndSub
+
+Sub rotateAntiClockwise
+  
+EndSub
+
+
+
+Sub FlipRight
+  
+  Motor.Move(port_A1,-30,80,"False")
+  x= x+360
+  Motor.Move(port_D1,-30,x,"True")
+  x= 75
+  Motor.Move(port_D1,30,x,"True")
+  Motor.Move(port_A1,30,90,"True")
+EndSub
+
+Sub FlipLeft
+  
+EndSub
+
+Sub FlipFront
+  
+EndSub
+
+
+
+
