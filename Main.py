@@ -138,24 +138,24 @@ for i in range(1, 7):
     four = Four.Four(x, y, x2, y2)
     five = Five.Five(x, y, x2, y2)
 
-    three.rec_place(rotated)
+    # three.rec_place(rotated)
     # four.rec_place(rotated)
     # five.rec_place(rotated)
 
     # if win32api.GetKeyState(0x01) < 0:
     #     time.sleep(0.5)
 
-    hue = three.centers(hsv.get_hsv())
+    # hue = three.centers(hsv.get_hsv())
     # hue = four.centers(hsv.get_hsv())
     # hue = five.centers(hsv.get_hsv())
-    print(three.standard_deviation(hsv2.get_hsv()))
+    # print(three.standard_deviation(hsv2.get_hsv()))
     # print(four.standard_deviation(hsv2.get_hsv()))
     # print(five.standard_deviation(hsv2.get_hsv()))
 
-    three.assigning(hue, i-1)
+    # three.assigning(hue, i-1)
     # four.assigning(hue, i - 1)
     # five.assigning(hue, i-1)
-    print(Move.test2)
+    # print(Move.test2)
 
     # print(Move1.test2)
     # print(Move2.test2)
