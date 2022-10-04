@@ -7,13 +7,15 @@ class Hsv:
     #     pass
     # cv.namedWindow("red_trackbar")
     # cv.createTrackbar("L-V", "red_trackbar", 0, 255, nothing)
-    @staticmethod
+    def __init__(self):
+        self.hsv = 0
+
     def processing(self, frame):
         self.hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-        kernal = np.ones((3, 3), np.uint8)
+        kernal = np.ones((3,3), np.uint8)
 
         # L_V = cv.getTrackbarPos("L-V", "red_trackbar")
-        low = np.array([0, 0, 200])
+        low = np.array([0, 0, 150])
         high = np.array([180, 255, 255])
         mask = cv.inRange(self.hsv, low, high)
         mask = cv.erode(mask, kernal)
