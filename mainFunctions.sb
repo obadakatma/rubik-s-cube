@@ -1,41 +1,174 @@
-''This is The Variables zone 
 
+'This is The Variables zone 
+'Data = File.ReadContents("C:\Users\%USERNAME%\Desktop\EV3\instructions.txt")
+
+Data="4UUUAULDAULDAU"
+moves_count =Text.GetLength(Data)-1
 x= 75
-port_A1 = "1A"
-port_D1 = "1D"
-''End Variables
+dir = 1 'Direction of up and down
+dirr = 1 'Direction of Rotation
 
+CubeType = Text.GetSubText(Data,1,1)
 
+'Base Ports: 
+baseRotationPort="1A"  
+baseLiftPort="1B"
+
+'Right Ports:
+port_MidR = "1D"    
+port_LarR = "1C"
+
+'Center Ports:
+port_MidC = "2C"
+port_LarC = "2D"
+
+'Left Ports :
+port_MidL = "2A"    
+port_LarL = "2B"
+
+'End Variables
+
+'Functions ( ) :
+sub rotate4
+  Motor.Move(baseRotationPort,dirr*-40,227,"True")
+  Program.Delay(200) 
+  Motor.Move(baseRotationPort,dirr*30,34,"True")
+  Program.Delay(200) 
+  Motor.Move(baseRotationPort,dirr*-30,17,"True")
+  
+EndSub
+sub rotate3
+  Motor.Move(baseRotationPort,dirr*-40,235,"True")
+  Program.Delay(200) 
+  Motor.Move(baseRotationPort,dirr*30,26,"True")
+  Program.Delay(200) 
+  'Motor.Move(baseRotationPort,dirr*-60,60,"True")
+EndSub
+Sub rotate5
+  Motor.Move(baseRotationPort,dirr*-40,224,"True")
+  Program.Delay(300) 
+  Motor.Move(baseRotationPort,dirr*30,14,"True")
+  Program.Delay(300) 
+  
+EndSub
 
 Sub rotateClockwise
-  
-  
+  dirr=1
+  If CubeType=3 Then
+    rotate3()
+  ElseIf CubeType =4 Then
+    rotate4()
+  Else 
+    rotate5()
+  EndIf
 EndSub
 
 Sub rotateAntiClockwise
-  
+  dirr=-1
+  If CubeType=3 Then
+    rotate3()
+  ElseIf CubeType   =4 Then
+    rotate4()
+  Else 
+    rotate5()  
+  EndIf
 EndSub
 
+Sub lift3
+  Motor.Move(baseLiftPort,dir*60,530,"True")  
+EndSub
+
+sub lift4
+  Motor.Move(baseLiftPort,dir*40,400,"True")  
+EndSub
+
+sub lift5
+  Motor.Move(baseLiftPort,dir*40,285,"True")  '
+EndSub
+
+Sub OneLevel
+  If CubeType= 3 Then
+    lift3()
+  ElseIf CubeType=4 Then 
+    lift4()
+  ElseIf  CubeType=5 Then
+    lift5()  
+  EndIf
+  
+EndSub
 
 
 Sub FlipRight
-  
-  Motor.Move(port_A1,-30,80,"False")
+  x = 90
+  Motor.Move(port_MidR,-30,80,"False")
   x= x+360
-  Motor.Move(port_D1,-30,x,"True")
-  x= 75
-  Motor.Move(port_D1,30,x,"True")
-  Motor.Move(port_A1,30,90,"True")
+  Motor.Move(port_LarR,-40,x,"True")
+  x= 90
+  Motor.Move(port_LarR,40,x,"True")
+  Motor.Move(port_MidR,30,90,"True")
 EndSub
 
 Sub FlipLeft
-  
+  x = 98
+  Motor.Move(port_MidL,-30,80,"False")
+  x= x+360
+  Motor.Move(port_LarL,-45,x,"True")
+  x= 98 
+  Motor.Move(port_LarL,50,x,"True")
+  Motor.Move(port_MidL,30,90,"True")
 EndSub
 
-Sub FlipFront
-  
+Sub FlipCenter
+  x=98
+  Motor.Move(port_MidC,-30,80,"False")
+  x= x+360
+  Motor.Move(port_LarC,-40,x,"True")
+  x= 98
+  Motor.Move(port_LarC,40,x,"True")
+  Motor.Move(port_MidC,30,80,"True")  
 EndSub
 
+'Doc of Moves: 
+' L stands for Left  flip
+'R 'stands for Right flip 
+' C  stands for Center  flip
+'U  stands for one level up
+'D stands for one level down
+'W stands for Clockwise Base rotation
+'A stands for Anti-Clockwise Base rotation
 
+''Test Area :
+  
+'for k=0 to 0
+  bottom =Sensor.ReadPercent(1) 
+  While  bottom=0
+    bottom =Sensor.ReadPercent(1)
+    Motor.Start(baseLiftPort,-30)
+  EndWhile
+  Motor.Stop(baseLiftPort,"True")
+  
+  For i=2 To (moves_count+1)
+    current = Text.GetSubText(Data,i,1)
+    If current="L" Then 
+      FlipLeft()
+    ElseIf current="R" Then
+      FlipRight()
+    ElseIf current="C" Then
+      FlipCenter()
+    ElseIf current="U" Then
+      dir=1
+      OneLevel()
+    ElseIf current="D" Then
+      dir=-1
+      OneLevel()
+    ElseIf current="W" Then
+      rotateClockwise()
+    ElseIf current="A" Then
+      rotateAntiClockwise()
+    EndIf
+    Program.Delay(10) 
+    
+  EndFor
+'endFor
 
-
+Program.End()
