@@ -36,7 +36,7 @@ class Four:
         for row, i in zip(range(4), range(self.pt1[1] + self.length, self.pt2[1], self.length * 2)):
             for col, j in zip(range(4), range(self.pt1[0] + self.length, self.pt2[0], self.length * 2)):
                 self.h[row][col] = frame[i, j][0]
-                print(self.h)
+                # print(self.h)
                 self.s[row][col] = frame[i, j][1]
         return self.h
 

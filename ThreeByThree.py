@@ -44,7 +44,7 @@ class Three:
         return self.h
 
     def standard_deviation(self, frame):
-        frame = cv.GaussianBlur(frame,)
+        frame = cv.GaussianBlur(frame, (187, 187), 7)
         pt1 = (self.pt1[0] + (self.length * 2), self.pt1[1] + (self.length * 2))
         pt2 = (self.pt1[0] + (self.length * 4), self.pt1[1] + (self.length * 4))
         hue_sum = 0

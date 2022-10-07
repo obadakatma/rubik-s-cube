@@ -2,8 +2,6 @@ from copy import deepcopy
 
 from Color import Color
 
-
-
 goal = [
     [[Color.RED, Color.RED, Color.RED],
      [Color.RED, Color.RED, Color.RED],
@@ -24,7 +22,6 @@ goal = [
      [Color.ORANGE, Color.ORANGE, Color.ORANGE],
      [Color.ORANGE, Color.ORANGE, Color.ORANGE]]
 ]
-
 
 test = [
     [[Color.RED, Color.RED, Color.RED],
@@ -690,3 +687,22 @@ class State:
         height.height -= 1
         return height
 
+    def switchIndexes(self, num_of_rotate):
+        newState = deepcopy(self)
+        for j in range(6):
+            for k in range(num_of_rotate[j]):
+                newState.state[j][0][2], \
+                newState.state[j][2][2], \
+                newState.state[j][2][0], \
+                newState.state[j][0][0] = State.circle4F(newState.state[j][0][2],
+                                                         newState.state[j][2][2],
+                                                         newState.state[j][2][0],
+                                                         newState.state[j][0][0])
+                newState.state[j][0][1], \
+                newState.state[j][1][2], \
+                newState.state[j][2][1], \
+                newState.state[j][1][0] = State.circle4F(newState.state[j][0][1],
+                                                         newState.state[j][1][2],
+                                                         newState.state[j][2][1],
+                                                         newState.state[j][1][0])
+        return newState

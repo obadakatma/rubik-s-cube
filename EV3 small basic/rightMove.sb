@@ -1,5 +1,5 @@
-port_MidL = "2A"    
-port_LarL = "2B"
+port_MidL = "1D"    
+port_LarL = "1C"
 x = 98
 Motor.Move(port_MidL,-30,80,"False")
 x= x+360

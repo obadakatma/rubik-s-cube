@@ -85,1254 +85,1207 @@ test2 = [
 ]
 
 
-def circle4F(w, x, y, z):
-    temp = w
-    w = x
-    x = y
-    y = z
-    z = temp
-    return w, x, y, z
-
-
-def circle4B(w, x, y, z):
-    temp = z
-    z = y
-    y = x
-    x = w
-    w = temp
-    return w, x, y, z
-
-
-def L1R(state):
-    newState = deepcopy(state)
-    newState[0][3][0], \
-    newState[4][3][0], \
-    newState[5][3][0], \
-    newState[2][3][0] = circle4B(newState[0][3][0],
-                                 newState[4][3][0],
-                                 newState[5][3][0],
-                                 newState[2][3][0])
-    newState[0][3][1], \
-    newState[4][3][1], \
-    newState[5][3][1], \
-    newState[2][3][1] = circle4B(newState[0][3][1],
-                                 newState[4][3][1],
-                                 newState[5][3][1],
-                                 newState[2][3][1])
-    newState[0][3][2], \
-    newState[4][3][2], \
-    newState[5][3][2], \
-    newState[2][3][2] = circle4B(newState[0][3][2],
-                                 newState[4][3][2],
-                                 newState[5][3][2],
-                                 newState[2][3][2])
-
-    newState[0][3][3], \
-    newState[4][3][3], \
-    newState[5][3][3], \
-    newState[2][3][3] = circle4B(newState[0][3][3],
-                                 newState[4][3][3],
-                                 newState[5][3][3],
-                                 newState[2][3][3])
-
-    newState[3][0][3], \
-    newState[3][3][3], \
-    newState[3][3][0], \
-    newState[3][0][0] = circle4B(newState[3][0][3],
-                                 newState[3][3][3],
-                                 newState[3][3][0],
-                                 newState[3][0][0])
-    newState[3][0][1], \
-    newState[3][1][3], \
-    newState[3][3][2], \
-    newState[3][2][0] = circle4B(newState[3][0][1],
-                                 newState[3][1][3],
-                                 newState[3][3][2],
-                                 newState[3][2][0])
-    newState[3][0][2], \
-    newState[3][2][3], \
-    newState[3][3][1], \
-    newState[3][1][0] = circle4B(newState[3][0][2],
-                                 newState[3][2][3],
-                                 newState[3][3][1],
-                                 newState[3][1][0])
-
-    newState[3][1][1], \
-    newState[3][1][2], \
-    newState[3][2][2], \
-    newState[3][2][1] = circle4B(newState[3][1][1],
-                                 newState[3][1][2],
-                                 newState[3][2][2],
-                                 newState[3][2][1])
-
-    return newState
-
-
-# for line in L1R(test):
-#     for line1 in line:
-#         print(line1)
-
-def L1L(state):
-    newState = deepcopy(state)
-    newState[0][3][0], \
-    newState[4][3][0], \
-    newState[5][3][0], \
-    newState[2][3][0] = circle4F(newState[0][3][0],
-                                 newState[4][3][0],
-                                 newState[5][3][0],
-                                 newState[2][3][0])
-    newState[0][3][1], \
-    newState[4][3][1], \
-    newState[5][3][1], \
-    newState[2][3][1] = circle4F(newState[0][3][1],
-                                 newState[4][3][1],
-                                 newState[5][3][1],
-                                 newState[2][3][1])
-    newState[0][3][2], \
-    newState[4][3][2], \
-    newState[5][3][2], \
-    newState[2][3][2] = circle4F(newState[0][3][2],
-                                 newState[4][3][2],
-                                 newState[5][3][2],
-                                 newState[2][3][2])
-
-    newState[0][3][3], \
-    newState[4][3][3], \
-    newState[5][3][3], \
-    newState[2][3][3] = circle4F(newState[0][3][3],
-                                 newState[4][3][3],
-                                 newState[5][3][3],
-                                 newState[2][3][3])
-
-    newState[3][0][3], \
-    newState[3][3][3], \
-    newState[3][3][0], \
-    newState[3][0][0] = circle4F(newState[3][0][3],
-                                 newState[3][3][3],
-                                 newState[3][3][0],
-                                 newState[3][0][0])
-    newState[3][0][1], \
-    newState[3][1][3], \
-    newState[3][3][2], \
-    newState[3][2][0] = circle4F(newState[3][0][1],
-                                 newState[3][1][3],
-                                 newState[3][3][2],
-                                 newState[3][2][0])
-    newState[3][0][2], \
-    newState[3][2][3], \
-    newState[3][3][1], \
-    newState[3][1][0] = circle4F(newState[3][0][2],
-                                 newState[3][2][3],
-                                 newState[3][3][1],
-                                 newState[3][1][0])
-
-    newState[3][1][1], \
-    newState[3][1][2], \
-    newState[3][2][2], \
-    newState[3][2][1] = circle4F(newState[3][1][1],
-                                 newState[3][1][2],
-                                 newState[3][2][2],
-                                 newState[3][2][1])
-
-    return newState
-
-
-# for line in L1L(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def L2R(state):
-    newState = L1R(state)
-
-    newState[0][2][0], \
-    newState[4][2][0], \
-    newState[5][2][0], \
-    newState[2][2][0] = circle4B(newState[0][2][0],
-                                 newState[4][2][0],
-                                 newState[5][2][0],
-                                 newState[2][2][0])
-    newState[0][2][1], \
-    newState[4][2][1], \
-    newState[5][2][1], \
-    newState[2][2][1] = circle4B(newState[0][2][1],
-                                 newState[4][2][1],
-                                 newState[5][2][1],
-                                 newState[2][2][1])
-
-    newState[0][2][2], \
-    newState[4][2][2], \
-    newState[5][2][2], \
-    newState[2][2][2] = circle4B(newState[0][2][2],
-                                 newState[4][2][2],
-                                 newState[5][2][2],
-                                 newState[2][2][2])
-
-    newState[0][2][3], \
-    newState[4][2][3], \
-    newState[5][2][3], \
-    newState[2][2][3] = circle4B(newState[0][2][3],
-                                 newState[4][2][3],
-                                 newState[5][2][3],
-                                 newState[2][2][3])
-
-    return newState
-
-
-# for line in L2R(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def L2L(state):
-    newState = L1L(state)
-
-    newState[0][2][0], \
-    newState[4][2][0], \
-    newState[5][2][0], \
-    newState[2][2][0] = circle4F(newState[0][2][0],
-                                 newState[4][2][0],
-                                 newState[5][2][0],
-                                 newState[2][2][0])
-    newState[0][2][1], \
-    newState[4][2][1], \
-    newState[5][2][1], \
-    newState[2][2][1] = circle4F(newState[0][2][1],
-                                 newState[4][2][1],
-                                 newState[5][2][1],
-                                 newState[2][2][1])
-
-    newState[0][2][2], \
-    newState[4][2][2], \
-    newState[5][2][2], \
-    newState[2][2][2] = circle4F(newState[0][2][2],
-                                 newState[4][2][2],
-                                 newState[5][2][2],
-                                 newState[2][2][2])
-
-    newState[0][2][3], \
-    newState[4][2][3], \
-    newState[5][2][3], \
-    newState[2][2][3] = circle4F(newState[0][2][3],
-                                 newState[4][2][3],
-                                 newState[5][2][3],
-                                 newState[2][2][3])
-
-    return newState
-
-
-# for line in L2L(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def L3R(state):
-    newState = L2R(state)
-
-    newState[0][1][0], \
-    newState[4][1][0], \
-    newState[5][1][0], \
-    newState[2][1][0] = circle4B(newState[0][1][0],
-                                 newState[4][1][0],
-                                 newState[5][1][0],
-                                 newState[2][1][0])
-    newState[0][1][1], \
-    newState[4][1][1], \
-    newState[5][1][1], \
-    newState[2][1][1] = circle4B(newState[0][1][1],
-                                 newState[4][1][1],
-                                 newState[5][1][1],
-                                 newState[2][1][1])
-
-    newState[0][1][2], \
-    newState[4][1][2], \
-    newState[5][1][2], \
-    newState[2][1][2] = circle4B(newState[0][1][2],
-                                 newState[4][1][2],
-                                 newState[5][1][2],
-                                 newState[2][1][2])
-
-    newState[0][1][3], \
-    newState[4][1][3], \
-    newState[5][1][3], \
-    newState[2][1][3] = circle4B(newState[0][1][3],
-                                 newState[4][1][3],
-                                 newState[5][1][3],
-                                 newState[2][1][3])
-
-    return newState
-
-
-# for line in L3R(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def L3L(state):
-    newState = L2L(state)
-
-    newState[0][1][0], \
-    newState[4][1][0], \
-    newState[5][1][0], \
-    newState[2][1][0] = circle4F(newState[0][1][0],
-                                 newState[4][1][0],
-                                 newState[5][1][0],
-                                 newState[2][1][0])
-    newState[0][1][1], \
-    newState[4][1][1], \
-    newState[5][1][1], \
-    newState[2][1][1] = circle4F(newState[0][1][1],
-                                 newState[4][1][1],
-                                 newState[5][1][1],
-                                 newState[2][1][1])
-
-    newState[0][1][2], \
-    newState[4][1][2], \
-    newState[5][1][2], \
-    newState[2][1][2] = circle4F(newState[0][1][2],
-                                 newState[4][1][2],
-                                 newState[5][1][2],
-                                 newState[2][1][2])
-
-    newState[0][1][3], \
-    newState[4][1][3], \
-    newState[5][1][3], \
-    newState[2][1][3] = circle4F(newState[0][1][3],
-                                 newState[4][1][3],
-                                 newState[5][1][3],
-                                 newState[2][1][3])
-
-    return newState
-
-
-# for line in L3L(test):
-#     for line1 in line:
-#         print(line1)
-
-def L4R(state):
-    newState = deepcopy(state)
-    newState[0][0][0], \
-    newState[4][0][0], \
-    newState[5][0][0], \
-    newState[2][0][0] = circle4B(newState[0][0][0],
-                                 newState[4][0][0],
-                                 newState[5][0][0],
-                                 newState[2][0][0])
-    newState[0][0][1], \
-    newState[4][0][1], \
-    newState[5][0][1], \
-    newState[2][0][1] = circle4B(newState[0][0][1],
-                                 newState[4][0][1],
-                                 newState[5][0][1],
-                                 newState[2][0][1])
-    newState[0][0][2], \
-    newState[4][0][2], \
-    newState[5][0][2], \
-    newState[2][0][2] = circle4B(newState[0][0][2],
-                                 newState[4][0][2],
-                                 newState[5][0][2],
-                                 newState[2][0][2])
-
-    newState[0][0][3], \
-    newState[4][0][3], \
-    newState[5][0][3], \
-    newState[2][0][3] = circle4B(newState[0][0][3],
-                                 newState[4][0][3],
-                                 newState[5][0][3],
-                                 newState[2][0][3])
-
-    newState[1][0][3], \
-    newState[1][3][3], \
-    newState[1][3][0], \
-    newState[1][0][0] = circle4F(newState[1][0][3],
-                                 newState[1][3][3],
-                                 newState[1][3][0],
-                                 newState[1][0][0])
-    newState[1][0][1], \
-    newState[1][1][3], \
-    newState[1][3][2], \
-    newState[1][2][0] = circle4F(newState[1][0][1],
-                                 newState[1][1][3],
-                                 newState[1][3][2],
-                                 newState[1][2][0])
-    newState[1][0][2], \
-    newState[1][2][3], \
-    newState[1][3][1], \
-    newState[1][1][0] = circle4F(newState[1][0][2],
-                                 newState[1][2][3],
-                                 newState[1][3][1],
-                                 newState[1][1][0])
-
-    newState[1][1][1], \
-    newState[1][1][2], \
-    newState[1][2][2], \
-    newState[1][2][1] = circle4F(newState[1][1][1],
-                                 newState[1][1][2],
-                                 newState[1][2][2],
-                                 newState[1][2][1])
-
-    return newState
-
-
-# for line in L4R(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def L4L(state):
-    newState = deepcopy(state)
-    newState[0][0][0], \
-    newState[4][0][0], \
-    newState[5][0][0], \
-    newState[2][0][0] = circle4F(newState[0][0][0],
-                                 newState[4][0][0],
-                                 newState[5][0][0],
-                                 newState[2][0][0])
-    newState[0][0][1], \
-    newState[4][0][1], \
-    newState[5][0][1], \
-    newState[2][0][1] = circle4F(newState[0][0][1],
-                                 newState[4][0][1],
-                                 newState[5][0][1],
-                                 newState[2][0][1])
-    newState[0][0][2], \
-    newState[4][0][2], \
-    newState[5][0][2], \
-    newState[2][0][2] = circle4F(newState[0][0][2],
-                                 newState[4][0][2],
-                                 newState[5][0][2],
-                                 newState[2][0][2])
-
-    newState[0][0][3], \
-    newState[4][0][3], \
-    newState[5][0][3], \
-    newState[2][0][3] = circle4F(newState[0][0][3],
-                                 newState[4][0][3],
-                                 newState[5][0][3],
-                                 newState[2][0][3])
-
-    newState[1][0][3], \
-    newState[1][3][3], \
-    newState[1][3][0], \
-    newState[1][0][0] = circle4B(newState[1][0][3],
-                                 newState[1][3][3],
-                                 newState[1][3][0],
-                                 newState[1][0][0])
-    newState[1][0][1], \
-    newState[1][1][3], \
-    newState[1][3][2], \
-    newState[1][2][0] = circle4B(newState[1][0][1],
-                                 newState[1][1][3],
-                                 newState[1][3][2],
-                                 newState[1][2][0])
-    newState[1][0][2], \
-    newState[1][2][3], \
-    newState[1][3][1], \
-    newState[1][1][0] = circle4B(newState[1][0][2],
-                                 newState[1][2][3],
-                                 newState[1][3][1],
-                                 newState[1][1][0])
-
-    newState[1][1][1], \
-    newState[1][1][2], \
-    newState[1][2][2], \
-    newState[1][2][1] = circle4B(newState[1][1][1],
-                                 newState[1][1][2],
-                                 newState[1][2][2],
-                                 newState[1][2][1])
-
-    return newState
-
-
-# for line in L4L(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def RotateR(state):
-    temp = L3R(state)
-    newState = L4R(temp)
-    return newState
-
-
-# for line in RotateR(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def RotateL(state):
-    temp = L3L(state)
-    newState = L4L(temp)
-    return newState
-
-
-# for line in RotateL(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def FlipForward(state):
-    newState = deepcopy(state)
-    newState[0][0][0], \
-    newState[1][0][0], \
-    newState[5][3][3], \
-    newState[3][0][0] = circle4F(newState[0][0][0],
-                                 newState[1][0][0],
-                                 newState[5][3][3],
-                                 newState[3][0][0])
-    newState[0][0][1], \
-    newState[1][0][1], \
-    newState[5][3][2], \
-    newState[3][0][1] = circle4F(newState[0][0][1],
-                                 newState[1][0][1],
-                                 newState[5][3][2],
-                                 newState[3][0][1])
-    newState[0][0][2], \
-    newState[1][0][2], \
-    newState[5][3][1], \
-    newState[3][0][2] = circle4F(newState[0][0][2],
-                                 newState[1][0][2],
-                                 newState[5][3][1],
-                                 newState[3][0][2])
-
-    newState[0][0][3], \
-    newState[1][0][3], \
-    newState[5][3][0], \
-    newState[3][0][3] = circle4F(newState[0][0][3],
-                                 newState[1][0][3],
-                                 newState[5][3][0],
-                                 newState[3][0][3])
-
-    newState[0][1][0], \
-    newState[1][1][0], \
-    newState[5][2][3], \
-    newState[3][1][0] = circle4F(newState[0][1][0],
-                                 newState[1][1][0],
-                                 newState[5][2][3],
-                                 newState[3][1][0])
-    newState[0][1][1], \
-    newState[1][1][1], \
-    newState[5][2][2], \
-    newState[3][1][1] = circle4F(newState[0][1][1],
-                                 newState[1][1][1],
-                                 newState[5][2][2],
-                                 newState[3][1][1])
-    newState[0][1][2], \
-    newState[1][1][2], \
-    newState[5][2][1], \
-    newState[3][1][2] = circle4F(newState[0][1][2],
-                                 newState[1][1][2],
-                                 newState[5][2][1],
-                                 newState[3][1][2])
-
-    newState[0][1][3], \
-    newState[1][1][3], \
-    newState[5][2][0], \
-    newState[3][1][3] = circle4F(newState[0][1][3],
-                                 newState[1][1][3],
-                                 newState[5][2][0],
-                                 newState[3][1][3])
-
-    newState[0][2][0], \
-    newState[1][2][0], \
-    newState[5][1][3], \
-    newState[3][2][0] = circle4F(newState[0][2][0],
-                                 newState[1][2][0],
-                                 newState[5][1][3],
-                                 newState[3][2][0])
-    newState[0][2][1], \
-    newState[1][2][1], \
-    newState[5][1][2], \
-    newState[3][2][1] = circle4F(newState[0][2][1],
-                                 newState[1][2][1],
-                                 newState[5][1][2],
-                                 newState[3][2][1])
-    newState[0][2][2], \
-    newState[1][2][2], \
-    newState[5][1][1], \
-    newState[3][2][2] = circle4F(newState[0][2][2],
-                                 newState[1][2][2],
-                                 newState[5][1][1],
-                                 newState[3][2][2])
-
-    newState[0][2][3], \
-    newState[1][2][3], \
-    newState[5][1][0], \
-    newState[3][2][3] = circle4F(newState[0][2][3],
-                                 newState[1][2][3],
-                                 newState[5][1][0],
-                                 newState[3][2][3])
-
-    newState[0][3][0], \
-    newState[1][3][0], \
-    newState[5][0][3], \
-    newState[3][3][0] = circle4F(newState[0][3][0],
-                                 newState[1][3][0],
-                                 newState[5][0][3],
-                                 newState[3][3][0])
-
-    newState[0][3][1], \
-    newState[1][3][1], \
-    newState[5][0][2], \
-    newState[3][3][1] = circle4F(newState[0][3][1],
-                                 newState[1][3][1],
-                                 newState[5][0][2],
-                                 newState[3][3][1])
-
-    newState[0][3][2], \
-    newState[1][3][2], \
-    newState[5][0][1], \
-    newState[3][3][2] = circle4F(newState[0][3][2],
-                                 newState[1][3][2],
-                                 newState[5][0][1],
-                                 newState[3][3][2])
-
-    newState[0][3][3], \
-    newState[1][3][3], \
-    newState[5][0][0], \
-    newState[3][3][3] = circle4F(newState[0][3][3],
-                                 newState[1][3][3],
-                                 newState[5][0][0],
-                                 newState[3][3][3])
-
-    newState[2][0][0], \
-    newState[2][0][3], \
-    newState[2][3][3], \
-    newState[2][3][0] = circle4B(newState[2][0][0],
-                                 newState[2][0][3],
-                                 newState[2][3][3],
-                                 newState[2][3][0])
-    newState[2][0][1], \
-    newState[2][1][3], \
-    newState[2][3][2], \
-    newState[2][2][0] = circle4B(newState[2][0][1],
-                                 newState[2][1][3],
-                                 newState[2][3][2],
-                                 newState[2][2][0])
-
-    newState[2][0][2], \
-    newState[2][2][3], \
-    newState[2][3][1], \
-    newState[2][1][0] = circle4B(newState[2][0][2],
-                                 newState[2][2][3],
-                                 newState[2][3][1],
-                                 newState[2][1][0])
-
-    newState[2][1][1], \
-    newState[2][1][2], \
-    newState[2][2][2], \
-    newState[2][2][1] = circle4B(newState[2][1][1],
-                                 newState[2][1][2],
-                                 newState[2][2][2],
-                                 newState[2][2][1])
-
-    newState[4][0][0], \
-    newState[4][0][3], \
-    newState[4][3][3], \
-    newState[4][3][0] = circle4F(newState[4][0][0],
-                                 newState[4][0][3],
-                                 newState[4][3][3],
-                                 newState[4][3][0])
-    newState[4][0][1], \
-    newState[4][1][3], \
-    newState[4][3][2], \
-    newState[4][2][0] = circle4F(newState[4][0][1],
-                                 newState[4][1][3],
-                                 newState[4][3][2],
-                                 newState[4][2][0])
-
-    newState[4][0][2], \
-    newState[4][2][3], \
-    newState[4][3][1], \
-    newState[4][1][0] = circle4F(newState[4][0][2],
-                                 newState[4][2][3],
-                                 newState[4][3][1],
-                                 newState[4][1][0])
-
-    newState[4][1][1], \
-    newState[4][1][2], \
-    newState[4][2][2], \
-    newState[4][2][1] = circle4F(newState[4][1][1],
-                                 newState[4][1][2],
-                                 newState[4][2][2],
-                                 newState[4][2][1])
-    return newState
-
-
-# for line in FlipForward(test):
-#     for line1 in line:
-#         print(line1)
-
-
-def FlipBackward(state):
-    newState = deepcopy(state)
-    newState[0][0][0], \
-    newState[1][0][0], \
-    newState[5][3][3], \
-    newState[3][0][0] = circle4B(newState[0][0][0],
-                                 newState[1][0][0],
-                                 newState[5][3][3],
-                                 newState[3][0][0])
-    newState[0][0][1], \
-    newState[1][0][1], \
-    newState[5][3][2], \
-    newState[3][0][1] = circle4B(newState[0][0][1],
-                                 newState[1][0][1],
-                                 newState[5][3][2],
-                                 newState[3][0][1])
-    newState[0][0][2], \
-    newState[1][0][2], \
-    newState[5][3][1], \
-    newState[3][0][2] = circle4B(newState[0][0][2],
-                                 newState[1][0][2],
-                                 newState[5][3][1],
-                                 newState[3][0][2])
-
-    newState[0][0][3], \
-    newState[1][0][3], \
-    newState[5][3][0], \
-    newState[3][0][3] = circle4B(newState[0][0][3],
-                                 newState[1][0][3],
-                                 newState[5][3][0],
-                                 newState[3][0][3])
-
-    newState[0][1][0], \
-    newState[1][1][0], \
-    newState[5][2][3], \
-    newState[3][1][0] = circle4B(newState[0][1][0],
-                                 newState[1][1][0],
-                                 newState[5][2][3],
-                                 newState[3][1][0])
-    newState[0][1][1], \
-    newState[1][1][1], \
-    newState[5][2][2], \
-    newState[3][1][1] = circle4B(newState[0][1][1],
-                                 newState[1][1][1],
-                                 newState[5][2][2],
-                                 newState[3][1][1])
-    newState[0][1][2], \
-    newState[1][1][2], \
-    newState[5][2][1], \
-    newState[3][1][2] = circle4B(newState[0][1][2],
-                                 newState[1][1][2],
-                                 newState[5][2][1],
-                                 newState[3][1][2])
-
-    newState[0][1][3], \
-    newState[1][1][3], \
-    newState[5][2][0], \
-    newState[3][1][3] = circle4B(newState[0][1][3],
-                                 newState[1][1][3],
-                                 newState[5][2][0],
-                                 newState[3][1][3])
-
-    newState[0][2][0], \
-    newState[1][2][0], \
-    newState[5][1][3], \
-    newState[3][2][0] = circle4B(newState[0][2][0],
-                                 newState[1][2][0],
-                                 newState[5][1][3],
-                                 newState[3][2][0])
-    newState[0][2][1], \
-    newState[1][2][1], \
-    newState[5][1][2], \
-    newState[3][2][1] = circle4B(newState[0][2][1],
-                                 newState[1][2][1],
-                                 newState[5][1][2],
-                                 newState[3][2][1])
-    newState[0][2][2], \
-    newState[1][2][2], \
-    newState[5][1][1], \
-    newState[3][2][2] = circle4B(newState[0][2][2],
-                                 newState[1][2][2],
-                                 newState[5][1][1],
-                                 newState[3][2][2])
-
-    newState[0][2][3], \
-    newState[1][2][3], \
-    newState[5][1][0], \
-    newState[3][2][3] = circle4B(newState[0][2][3],
-                                 newState[1][2][3],
-                                 newState[5][1][0],
-                                 newState[3][2][3])
-
-    newState[0][3][0], \
-    newState[1][3][0], \
-    newState[5][0][3], \
-    newState[3][3][0] = circle4B(newState[0][3][0],
-                                 newState[1][3][0],
-                                 newState[5][0][3],
-                                 newState[3][3][0])
-
-    newState[0][3][1], \
-    newState[1][3][1], \
-    newState[5][0][2], \
-    newState[3][3][1] = circle4B(newState[0][3][1],
-                                 newState[1][3][1],
-                                 newState[5][0][2],
-                                 newState[3][3][1])
-
-    newState[0][3][2], \
-    newState[1][3][2], \
-    newState[5][0][1], \
-    newState[3][3][2] = circle4B(newState[0][3][2],
-                                 newState[1][3][2],
-                                 newState[5][0][1],
-                                 newState[3][3][2])
-
-    newState[0][3][3], \
-    newState[1][3][3], \
-    newState[5][0][0], \
-    newState[3][3][3] = circle4B(newState[0][3][3],
-                                 newState[1][3][3],
-                                 newState[5][0][0],
-                                 newState[3][3][3])
-
-    newState[2][0][0], \
-    newState[2][0][3], \
-    newState[2][3][3], \
-    newState[2][3][0] = circle4F(newState[2][0][0],
-                                 newState[2][0][3],
-                                 newState[2][3][3],
-                                 newState[2][3][0])
-    newState[2][0][1], \
-    newState[2][1][3], \
-    newState[2][3][2], \
-    newState[2][2][0] = circle4F(newState[2][0][1],
-                                 newState[2][1][3],
-                                 newState[2][3][2],
-                                 newState[2][2][0])
-
-    newState[2][0][2], \
-    newState[2][2][3], \
-    newState[2][3][1], \
-    newState[2][1][0] = circle4F(newState[2][0][2],
-                                 newState[2][2][3],
-                                 newState[2][3][1],
-                                 newState[2][1][0])
-
-    newState[2][1][1], \
-    newState[2][1][2], \
-    newState[2][2][2], \
-    newState[2][2][1] = circle4F(newState[2][1][1],
-                                 newState[2][1][2],
-                                 newState[2][2][2],
-                                 newState[2][2][1])
-
-    newState[4][0][0], \
-    newState[4][0][3], \
-    newState[4][3][3], \
-    newState[4][3][0] = circle4B(newState[4][0][0],
-                                 newState[4][0][3],
-                                 newState[4][3][3],
-                                 newState[4][3][0])
-    newState[4][0][1], \
-    newState[4][1][3], \
-    newState[4][3][2], \
-    newState[4][2][0] = circle4B(newState[4][0][1],
-                                 newState[4][1][3],
-                                 newState[4][3][2],
-                                 newState[4][2][0])
-
-    newState[4][0][2], \
-    newState[4][2][3], \
-    newState[4][3][1], \
-    newState[4][1][0] = circle4B(newState[4][0][2],
-                                 newState[4][2][3],
-                                 newState[4][3][1],
-                                 newState[4][1][0])
-
-    newState[4][1][1], \
-    newState[4][1][2], \
-    newState[4][2][2], \
-    newState[4][2][1] = circle4B(newState[4][1][1],
-                                 newState[4][1][2],
-                                 newState[4][2][2],
-                                 newState[4][2][1])
-    return newState
-
-
-# for line in FlipBackward(test):
-#     for line1 in line:
-#         print(line1)
-
-def FlipRight(state):
-    newState = deepcopy(state)
-    newState[1][0][0], \
-    newState[2][3][0], \
-    newState[3][3][3], \
-    newState[4][0][3] = circle4F(newState[1][0][0],
-                                 newState[2][3][0],
-                                 newState[3][3][3],
-                                 newState[4][0][3])
-    newState[1][0][1], \
-    newState[2][2][0], \
-    newState[3][3][2], \
-    newState[4][1][3] = circle4F(newState[1][0][1],
-                                 newState[2][2][0],
-                                 newState[3][3][2],
-                                 newState[4][1][3])
-    newState[1][0][2], \
-    newState[2][1][0], \
-    newState[3][3][1], \
-    newState[4][2][3] = circle4F(newState[1][0][2],
-                                 newState[2][1][0],
-                                 newState[3][3][1],
-                                 newState[4][2][3])
-
-    newState[1][0][3], \
-    newState[2][0][0], \
-    newState[3][3][0], \
-    newState[4][3][3] = circle4F(newState[1][0][3],
-                                 newState[2][0][0],
-                                 newState[3][3][0],
-                                 newState[4][3][3])
-    newState[1][1][0], \
-    newState[2][3][1], \
-    newState[3][2][3], \
-    newState[4][0][2] = circle4F(newState[1][1][0],
-                                 newState[2][3][1],
-                                 newState[3][2][3],
-                                 newState[4][0][2])
-    newState[1][1][1], \
-    newState[2][2][1], \
-    newState[3][2][2], \
-    newState[4][1][2] = circle4F(newState[1][1][1],
-                                 newState[2][2][1],
-                                 newState[3][2][2],
-                                 newState[4][1][2])
-    newState[1][1][2], \
-    newState[2][1][1], \
-    newState[3][2][1], \
-    newState[4][2][2] = circle4F(newState[1][1][2],
-                                 newState[2][1][1],
-                                 newState[3][2][1],
-                                 newState[4][2][2])
-
-    newState[1][1][3], \
-    newState[2][0][1], \
-    newState[3][2][0], \
-    newState[4][3][2] = circle4F(newState[1][1][3],
-                                 newState[2][0][1],
-                                 newState[3][2][0],
-                                 newState[4][3][2])
-
-    newState[1][2][0], \
-    newState[2][3][2], \
-    newState[3][1][3], \
-    newState[4][0][1] = circle4F(newState[1][2][0],
-                                 newState[2][3][2],
-                                 newState[3][1][3],
-                                 newState[4][0][1])
-    newState[1][2][1], \
-    newState[2][2][2], \
-    newState[3][1][2], \
-    newState[4][1][1] = circle4F(newState[1][2][1],
-                                 newState[2][2][2],
-                                 newState[3][1][2],
-                                 newState[4][1][1])
-    newState[1][2][2], \
-    newState[2][1][2], \
-    newState[3][1][1], \
-    newState[4][2][1] = circle4F(newState[1][2][2],
-                                 newState[2][1][2],
-                                 newState[3][1][1],
-                                 newState[4][2][1])
-
-    newState[1][2][3], \
-    newState[2][0][2], \
-    newState[3][1][0], \
-    newState[4][3][1] = circle4F(newState[1][2][3],
-                                 newState[2][0][2],
-                                 newState[3][1][0],
-                                 newState[4][3][1])
-
-    newState[1][3][0], \
-    newState[2][3][3], \
-    newState[3][0][3], \
-    newState[4][0][0] = circle4F(newState[1][3][0],
-                                 newState[2][3][3],
-                                 newState[3][0][3],
-                                 newState[4][0][0])
-
-    newState[1][3][1], \
-    newState[2][2][3], \
-    newState[3][0][2], \
-    newState[4][1][0] = circle4F(newState[1][3][1],
-                                 newState[2][2][3],
-                                 newState[3][0][2],
-                                 newState[4][1][0])
-    newState[1][3][2], \
-    newState[2][1][3], \
-    newState[3][0][1], \
-    newState[4][2][0] = circle4F(newState[1][3][2],
-                                 newState[2][1][3],
-                                 newState[3][0][1],
-                                 newState[4][2][0])
-
-    newState[1][3][3], \
-    newState[2][0][3], \
-    newState[3][0][0], \
-    newState[4][3][0] = circle4F(newState[1][3][3],
-                                 newState[2][0][3],
-                                 newState[3][0][0],
-                                 newState[4][3][0])
-
-    newState[0][0][0], \
-    newState[0][0][3], \
-    newState[0][3][3], \
-    newState[0][3][0] = circle4B(newState[0][0][0],
-                                 newState[0][0][3],
-                                 newState[0][3][3],
-                                 newState[0][3][0])
-    newState[0][0][1], \
-    newState[0][1][3], \
-    newState[0][3][2], \
-    newState[0][2][0] = circle4B(newState[0][0][1],
-                                 newState[0][1][3],
-                                 newState[0][3][2],
-                                 newState[0][2][0])
-
-    newState[0][0][2], \
-    newState[0][2][3], \
-    newState[0][3][1], \
-    newState[0][1][0] = circle4B(newState[0][0][2],
-                                 newState[0][2][3],
-                                 newState[0][3][1],
-                                 newState[0][1][0])
-
-    newState[0][1][1], \
-    newState[0][1][2], \
-    newState[0][2][2], \
-    newState[0][2][1] = circle4B(newState[0][1][1],
-                                 newState[0][1][2],
-                                 newState[0][2][2],
-                                 newState[0][2][1])
-
-    newState[5][0][0], \
-    newState[5][0][3], \
-    newState[5][3][3], \
-    newState[5][3][0] = circle4F(newState[5][0][0],
-                                 newState[5][0][3],
-                                 newState[5][3][3],
-                                 newState[5][3][0])
-    newState[5][0][1], \
-    newState[5][1][3], \
-    newState[5][3][2], \
-    newState[5][2][0] = circle4F(newState[5][0][1],
-                                 newState[5][1][3],
-                                 newState[5][3][2],
-                                 newState[5][2][0])
-
-    newState[5][0][2], \
-    newState[5][2][3], \
-    newState[5][3][1], \
-    newState[5][1][0] = circle4F(newState[5][0][2],
-                                 newState[5][2][3],
-                                 newState[5][3][1],
-                                 newState[5][1][0])
-
-    newState[5][1][1], \
-    newState[5][1][2], \
-    newState[5][2][2], \
-    newState[5][2][1] = circle4F(newState[5][1][1],
-                                 newState[5][1][2],
-                                 newState[5][2][2],
-                                 newState[5][2][1])
-
-    return newState
-
-
-# for line in FlipRight(test):
-#     for line1 in line:
-#         print(line1)
-
-def FlipLeft(state):
-    newState = deepcopy(state)
-    newState[1][0][0], \
-    newState[2][3][0], \
-    newState[3][3][3], \
-    newState[4][0][3] = circle4B(newState[1][0][0],
-                                 newState[2][3][0],
-                                 newState[3][3][3],
-                                 newState[4][0][3])
-    newState[1][0][1], \
-    newState[2][2][0], \
-    newState[3][3][2], \
-    newState[4][1][3] = circle4B(newState[1][0][1],
-                                 newState[2][2][0],
-                                 newState[3][3][2],
-                                 newState[4][1][3])
-    newState[1][0][2], \
-    newState[2][1][0], \
-    newState[3][3][1], \
-    newState[4][2][3] = circle4B(newState[1][0][2],
-                                 newState[2][1][0],
-                                 newState[3][3][1],
-                                 newState[4][2][3])
-
-    newState[1][0][3], \
-    newState[2][0][0], \
-    newState[3][3][0], \
-    newState[4][3][3] = circle4B(newState[1][0][3],
-                                 newState[2][0][0],
-                                 newState[3][3][0],
-                                 newState[4][3][3])
-    newState[1][1][0], \
-    newState[2][3][1], \
-    newState[3][2][3], \
-    newState[4][0][2] = circle4B(newState[1][1][0],
-                                 newState[2][3][1],
-                                 newState[3][2][3],
-                                 newState[4][0][2])
-    newState[1][1][1], \
-    newState[2][2][1], \
-    newState[3][2][2], \
-    newState[4][1][2] = circle4B(newState[1][1][1],
-                                 newState[2][2][1],
-                                 newState[3][2][2],
-                                 newState[4][1][2])
-    newState[1][1][2], \
-    newState[2][1][1], \
-    newState[3][2][1], \
-    newState[4][2][2] = circle4B(newState[1][1][2],
-                                 newState[2][1][1],
-                                 newState[3][2][1],
-                                 newState[4][2][2])
-
-    newState[1][1][3], \
-    newState[2][0][1], \
-    newState[3][2][0], \
-    newState[4][3][2] = circle4B(newState[1][1][3],
-                                 newState[2][0][1],
-                                 newState[3][2][0],
-                                 newState[4][3][2])
-
-    newState[1][2][0], \
-    newState[2][3][2], \
-    newState[3][1][3], \
-    newState[4][0][1] = circle4B(newState[1][2][0],
-                                 newState[2][3][2],
-                                 newState[3][1][3],
-                                 newState[4][0][1])
-    newState[1][2][1], \
-    newState[2][2][2], \
-    newState[3][1][2], \
-    newState[4][1][1] = circle4B(newState[1][2][1],
-                                 newState[2][2][2],
-                                 newState[3][1][2],
-                                 newState[4][1][1])
-    newState[1][2][2], \
-    newState[2][1][2], \
-    newState[3][1][1], \
-    newState[4][2][1] = circle4B(newState[1][2][2],
-                                 newState[2][1][2],
-                                 newState[3][1][1],
-                                 newState[4][2][1])
-
-    newState[1][2][3], \
-    newState[2][0][2], \
-    newState[3][1][0], \
-    newState[4][3][1] = circle4B(newState[1][2][3],
-                                 newState[2][0][2],
-                                 newState[3][1][0],
-                                 newState[4][3][1])
-
-    newState[1][3][0], \
-    newState[2][3][3], \
-    newState[3][0][3], \
-    newState[4][0][0] = circle4B(newState[1][3][0],
-                                 newState[2][3][3],
-                                 newState[3][0][3],
-                                 newState[4][0][0])
-
-    newState[1][3][1], \
-    newState[2][2][3], \
-    newState[3][0][2], \
-    newState[4][1][0] = circle4B(newState[1][3][1],
-                                 newState[2][2][3],
-                                 newState[3][0][2],
-                                 newState[4][1][0])
-    newState[1][3][2], \
-    newState[2][1][3], \
-    newState[3][0][1], \
-    newState[4][2][0] = circle4B(newState[1][3][2],
-                                 newState[2][1][3],
-                                 newState[3][0][1],
-                                 newState[4][2][0])
-
-    newState[1][3][3], \
-    newState[2][0][3], \
-    newState[3][0][0], \
-    newState[4][3][0] = circle4B(newState[1][3][3],
-                                 newState[2][0][3],
-                                 newState[3][0][0],
-                                 newState[4][3][0])
-
-    newState[0][0][0], \
-    newState[0][0][3], \
-    newState[0][3][3], \
-    newState[0][3][0] = circle4F(newState[0][0][0],
-                                 newState[0][0][3],
-                                 newState[0][3][3],
-                                 newState[0][3][0])
-    newState[0][0][1], \
-    newState[0][1][3], \
-    newState[0][3][2], \
-    newState[0][2][0] = circle4F(newState[0][0][1],
-                                 newState[0][1][3],
-                                 newState[0][3][2],
-                                 newState[0][2][0])
-
-    newState[0][0][2], \
-    newState[0][2][3], \
-    newState[0][3][1], \
-    newState[0][1][0] = circle4F(newState[0][0][2],
-                                 newState[0][2][3],
-                                 newState[0][3][1],
-                                 newState[0][1][0])
-
-    newState[0][1][1], \
-    newState[0][1][2], \
-    newState[0][2][2], \
-    newState[0][2][1] = circle4F(newState[0][1][1],
-                                 newState[0][1][2],
-                                 newState[0][2][2],
-                                 newState[0][2][1])
-
-    newState[5][0][0], \
-    newState[5][0][3], \
-    newState[5][3][3], \
-    newState[5][3][0] = circle4B(newState[5][0][0],
-                                 newState[5][0][3],
-                                 newState[5][3][3],
-                                 newState[5][3][0])
-    newState[5][0][1], \
-    newState[5][1][3], \
-    newState[5][3][2], \
-    newState[5][2][0] = circle4B(newState[5][0][1],
-                                 newState[5][1][3],
-                                 newState[5][3][2],
-                                 newState[5][2][0])
-
-    newState[5][0][2], \
-    newState[5][2][3], \
-    newState[5][3][1], \
-    newState[5][1][0] = circle4B(newState[5][0][2],
-                                 newState[5][2][3],
-                                 newState[5][3][1],
-                                 newState[5][1][0])
-
-    newState[5][1][1], \
-    newState[5][1][2], \
-    newState[5][2][2], \
-    newState[5][2][1] = circle4B(newState[5][1][1],
-                                 newState[5][1][2],
-                                 newState[5][2][2],
-                                 newState[5][2][1])
-
-    return newState
-
-# for line in FlipLeft(test):
-#     for line1 in line:
-#         print(line1)
+class State:
+    def __init__(self, height, state):
+        self.height = height
+        self.state = state
+
+    @staticmethod
+    def circle4F(w, x, y, z):
+        temp = w
+        w = x
+        x = y
+        y = z
+        z = temp
+        return w, x, y, z
+
+    @staticmethod
+    def circle4B(w, x, y, z):
+        temp = z
+        z = y
+        y = x
+        x = w
+        w = temp
+        return w, x, y, z
+
+    def L1R(self):
+        newState = deepcopy(self)
+        newState.state[0][3][0], \
+        newState.state[4][3][0], \
+        newState.state[5][3][0], \
+        newState.state[2][3][0] = State.circle4B(newState.state[0][3][0],
+                                                 newState.state[4][3][0],
+                                                 newState.state[5][3][0],
+                                                 newState.state[2][3][0])
+        newState.state[0][3][1], \
+        newState.state[4][3][1], \
+        newState.state[5][3][1], \
+        newState.state[2][3][1] = State.circle4B(newState.state[0][3][1],
+                                                 newState.state[4][3][1],
+                                                 newState.state[5][3][1],
+                                                 newState.state[2][3][1])
+        newState.state[0][3][2], \
+        newState.state[4][3][2], \
+        newState.state[5][3][2], \
+        newState.state[2][3][2] = State.circle4B(newState.state[0][3][2],
+                                                 newState.state[4][3][2],
+                                                 newState.state[5][3][2],
+                                                 newState.state[2][3][2])
+
+        newState.state[0][3][3], \
+        newState.state[4][3][3], \
+        newState.state[5][3][3], \
+        newState.state[2][3][3] = State.circle4B(newState.state[0][3][3],
+                                                 newState.state[4][3][3],
+                                                 newState.state[5][3][3],
+                                                 newState.state[2][3][3])
+
+        newState.state[3][0][3], \
+        newState.state[3][3][3], \
+        newState.state[3][3][0], \
+        newState.state[3][0][0] = State.circle4B(newState.state[3][0][3],
+                                                 newState.state[3][3][3],
+                                                 newState.state[3][3][0],
+                                                 newState.state[3][0][0])
+        newState.state[3][0][1], \
+        newState.state[3][1][3], \
+        newState.state[3][3][2], \
+        newState.state[3][2][0] = State.circle4B(newState.state[3][0][1],
+                                                 newState.state[3][1][3],
+                                                 newState.state[3][3][2],
+                                                 newState.state[3][2][0])
+        newState.state[3][0][2], \
+        newState.state[3][2][3], \
+        newState.state[3][3][1], \
+        newState.state[3][1][0] = State.circle4B(newState.state[3][0][2],
+                                                 newState.state[3][2][3],
+                                                 newState.state[3][3][1],
+                                                 newState.state[3][1][0])
+
+        newState.state[3][1][1], \
+        newState.state[3][1][2], \
+        newState.state[3][2][2], \
+        newState.state[3][2][1] = State.circle4B(newState.state[3][1][1],
+                                                 newState.state[3][1][2],
+                                                 newState.state[3][2][2],
+                                                 newState.state[3][2][1])
+
+        return newState
+
+    def L1L(self):
+        newState = deepcopy(self)
+        newState.state[0][3][0], \
+        newState.state[4][3][0], \
+        newState.state[5][3][0], \
+        newState.state[2][3][0] = State.circle4F(newState.state[0][3][0],
+                                                 newState.state[4][3][0],
+                                                 newState.state[5][3][0],
+                                                 newState.state[2][3][0])
+        newState.state[0][3][1], \
+        newState.state[4][3][1], \
+        newState.state[5][3][1], \
+        newState.state[2][3][1] = State.circle4F(newState.state[0][3][1],
+                                                 newState.state[4][3][1],
+                                                 newState.state[5][3][1],
+                                                 newState.state[2][3][1])
+        newState.state[0][3][2], \
+        newState.state[4][3][2], \
+        newState.state[5][3][2], \
+        newState.state[2][3][2] = State.circle4F(newState.state[0][3][2],
+                                                 newState.state[4][3][2],
+                                                 newState.state[5][3][2],
+                                                 newState.state[2][3][2])
+
+        newState.state[0][3][3], \
+        newState.state[4][3][3], \
+        newState.state[5][3][3], \
+        newState.state[2][3][3] = State.circle4F(newState.state[0][3][3],
+                                                 newState.state[4][3][3],
+                                                 newState.state[5][3][3],
+                                                 newState.state[2][3][3])
+
+        newState.state[3][0][3], \
+        newState.state[3][3][3], \
+        newState.state[3][3][0], \
+        newState.state[3][0][0] = State.circle4F(newState.state[3][0][3],
+                                                 newState.state[3][3][3],
+                                                 newState.state[3][3][0],
+                                                 newState.state[3][0][0])
+        newState.state[3][0][1], \
+        newState.state[3][1][3], \
+        newState.state[3][3][2], \
+        newState.state[3][2][0] = State.circle4F(newState.state[3][0][1],
+                                                 newState.state[3][1][3],
+                                                 newState.state[3][3][2],
+                                                 newState.state[3][2][0])
+        newState.state[3][0][2], \
+        newState.state[3][2][3], \
+        newState.state[3][3][1], \
+        newState.state[3][1][0] = State.circle4F(newState.state[3][0][2],
+                                                 newState.state[3][2][3],
+                                                 newState.state[3][3][1],
+                                                 newState.state[3][1][0])
+
+        newState.state[3][1][1], \
+        newState.state[3][1][2], \
+        newState.state[3][2][2], \
+        newState.state[3][2][1] = State.circle4F(newState.state[3][1][1],
+                                                 newState.state[3][1][2],
+                                                 newState.state[3][2][2],
+                                                 newState.state[3][2][1])
+
+        return newState
+
+    def L2R(self):
+        newState = State.L1R(self)
+
+        newState.state[0][2][0], \
+        newState.state[4][2][0], \
+        newState.state[5][2][0], \
+        newState.state[2][2][0] = State.circle4B(newState.state[0][2][0],
+                                                 newState.state[4][2][0],
+                                                 newState.state[5][2][0],
+                                                 newState.state[2][2][0])
+        newState.state[0][2][1], \
+        newState.state[4][2][1], \
+        newState.state[5][2][1], \
+        newState.state[2][2][1] = State.circle4B(newState.state[0][2][1],
+                                                 newState.state[4][2][1],
+                                                 newState.state[5][2][1],
+                                                 newState.state[2][2][1])
+
+        newState.state[0][2][2], \
+        newState.state[4][2][2], \
+        newState.state[5][2][2], \
+        newState.state[2][2][2] = State.circle4B(newState.state[0][2][2],
+                                                 newState.state[4][2][2],
+                                                 newState.state[5][2][2],
+                                                 newState.state[2][2][2])
+
+        newState.state[0][2][3], \
+        newState.state[4][2][3], \
+        newState.state[5][2][3], \
+        newState.state[2][2][3] = State.circle4B(newState.state[0][2][3],
+                                                 newState.state[4][2][3],
+                                                 newState.state[5][2][3],
+                                                 newState.state[2][2][3])
+
+        return newState
+
+    def L2L(self):
+        newState = State.L1L(self)
+
+        newState.state[0][2][0], \
+        newState.state[4][2][0], \
+        newState.state[5][2][0], \
+        newState.state[2][2][0] = State.circle4F(newState.state[0][2][0],
+                                                 newState.state[4][2][0],
+                                                 newState.state[5][2][0],
+                                                 newState.state[2][2][0])
+        newState.state[0][2][1], \
+        newState.state[4][2][1], \
+        newState.state[5][2][1], \
+        newState.state[2][2][1] = State.circle4F(newState.state[0][2][1],
+                                                 newState.state[4][2][1],
+                                                 newState.state[5][2][1],
+                                                 newState.state[2][2][1])
+
+        newState.state[0][2][2], \
+        newState.state[4][2][2], \
+        newState.state[5][2][2], \
+        newState.state[2][2][2] = State.circle4F(newState.state[0][2][2],
+                                                 newState.state[4][2][2],
+                                                 newState.state[5][2][2],
+                                                 newState.state[2][2][2])
+
+        newState.state[0][2][3], \
+        newState.state[4][2][3], \
+        newState.state[5][2][3], \
+        newState.state[2][2][3] = State.circle4F(newState.state[0][2][3],
+                                                 newState.state[4][2][3],
+                                                 newState.state[5][2][3],
+                                                 newState.state[2][2][3])
+
+        return newState
+
+    def L3R(self):
+        newState = State.L2R(self)
+
+        newState.state[0][1][0], \
+        newState.state[4][1][0], \
+        newState.state[5][1][0], \
+        newState.state[2][1][0] = State.circle4B(newState.state[0][1][0],
+                                                 newState.state[4][1][0],
+                                                 newState.state[5][1][0],
+                                                 newState.state[2][1][0])
+        newState.state[0][1][1], \
+        newState.state[4][1][1], \
+        newState.state[5][1][1], \
+        newState.state[2][1][1] = State.circle4B(newState.state[0][1][1],
+                                                 newState.state[4][1][1],
+                                                 newState.state[5][1][1],
+                                                 newState.state[2][1][1])
+
+        newState.state[0][1][2], \
+        newState.state[4][1][2], \
+        newState.state[5][1][2], \
+        newState.state[2][1][2] = State.circle4B(newState.state[0][1][2],
+                                                 newState.state[4][1][2],
+                                                 newState.state[5][1][2],
+                                                 newState.state[2][1][2])
+
+        newState.state[0][1][3], \
+        newState.state[4][1][3], \
+        newState.state[5][1][3], \
+        newState.state[2][1][3] = State.circle4B(newState.state[0][1][3],
+                                                 newState.state[4][1][3],
+                                                 newState.state[5][1][3],
+                                                 newState.state[2][1][3])
+
+        return newState
+
+    def L3L(self):
+        newState = State.L2L(self)
+
+        newState.state[0][1][0], \
+        newState.state[4][1][0], \
+        newState.state[5][1][0], \
+        newState.state[2][1][0] = State.circle4F(newState.state[0][1][0],
+                                                 newState.state[4][1][0],
+                                                 newState.state[5][1][0],
+                                                 newState.state[2][1][0])
+        newState.state[0][1][1], \
+        newState.state[4][1][1], \
+        newState.state[5][1][1], \
+        newState.state[2][1][1] = State.circle4F(newState.state[0][1][1],
+                                                 newState.state[4][1][1],
+                                                 newState.state[5][1][1],
+                                                 newState.state[2][1][1])
+
+        newState.state[0][1][2], \
+        newState.state[4][1][2], \
+        newState.state[5][1][2], \
+        newState.state[2][1][2] = State.circle4F(newState.state[0][1][2],
+                                                 newState.state[4][1][2],
+                                                 newState.state[5][1][2],
+                                                 newState.state[2][1][2])
+
+        newState.state[0][1][3], \
+        newState.state[4][1][3], \
+        newState.state[5][1][3], \
+        newState.state[2][1][3] = State.circle4F(newState.state[0][1][3],
+                                                 newState.state[4][1][3],
+                                                 newState.state[5][1][3],
+                                                 newState.state[2][1][3])
+
+        return newState
+
+    def RotateR(self):
+        newState = deepcopy(self)
+        newState.state[0][0][0], \
+        newState.state[4][0][0], \
+        newState.state[5][0][0], \
+        newState.state[2][0][0] = State.circle4B(newState.state[0][0][0],
+                                                 newState.state[4][0][0],
+                                                 newState.state[5][0][0],
+                                                 newState.state[2][0][0])
+        newState.state[0][0][1], \
+        newState.state[4][0][1], \
+        newState.state[5][0][1], \
+        newState.state[2][0][1] = State.circle4B(newState.state[0][0][1],
+                                                 newState.state[4][0][1],
+                                                 newState.state[5][0][1],
+                                                 newState.state[2][0][1])
+        newState.state[0][0][2], \
+        newState.state[4][0][2], \
+        newState.state[5][0][2], \
+        newState.state[2][0][2] = State.circle4B(newState.state[0][0][2],
+                                                 newState.state[4][0][2],
+                                                 newState.state[5][0][2],
+                                                 newState.state[2][0][2])
+
+        newState.state[0][0][3], \
+        newState.state[4][0][3], \
+        newState.state[5][0][3], \
+        newState.state[2][0][3] = State.circle4B(newState.state[0][0][3],
+                                                 newState.state[4][0][3],
+                                                 newState.state[5][0][3],
+                                                 newState.state[2][0][3])
+
+        newState.state[1][0][3], \
+        newState.state[1][3][3], \
+        newState.state[1][3][0], \
+        newState.state[1][0][0] = State.circle4F(newState.state[1][0][3],
+                                                 newState.state[1][3][3],
+                                                 newState.state[1][3][0],
+                                                 newState.state[1][0][0])
+        newState.state[1][0][1], \
+        newState.state[1][1][3], \
+        newState.state[1][3][2], \
+        newState.state[1][2][0] = State.circle4F(newState.state[1][0][1],
+                                                 newState.state[1][1][3],
+                                                 newState.state[1][3][2],
+                                                 newState.state[1][2][0])
+        newState.state[1][0][2], \
+        newState.state[1][2][3], \
+        newState.state[1][3][1], \
+        newState.state[1][1][0] = State.circle4F(newState.state[1][0][2],
+                                                 newState.state[1][2][3],
+                                                 newState.state[1][3][1],
+                                                 newState.state[1][1][0])
+
+        newState.state[1][1][1], \
+        newState.state[1][1][2], \
+        newState.state[1][2][2], \
+        newState.state[1][2][1] = State.circle4F(newState.state[1][1][1],
+                                                 newState.state[1][1][2],
+                                                 newState.state[1][2][2],
+                                                 newState.state[1][2][1])
+
+        return newState
+
+    def RotateL(self):
+        newState = deepcopy(self)
+        newState.state[0][0][0], \
+        newState.state[4][0][0], \
+        newState.state[5][0][0], \
+        newState.state[2][0][0] = State.circle4F(newState.state[0][0][0],
+                                                 newState.state[4][0][0],
+                                                 newState.state[5][0][0],
+                                                 newState.state[2][0][0])
+        newState.state[0][0][1], \
+        newState.state[4][0][1], \
+        newState.state[5][0][1], \
+        newState.state[2][0][1] = State.circle4F(newState.state[0][0][1],
+                                                 newState.state[4][0][1],
+                                                 newState.state[5][0][1],
+                                                 newState.state[2][0][1])
+        newState.state[0][0][2], \
+        newState.state[4][0][2], \
+        newState.state[5][0][2], \
+        newState.state[2][0][2] = State.circle4F(newState.state[0][0][2],
+                                                 newState.state[4][0][2],
+                                                 newState.state[5][0][2],
+                                                 newState.state[2][0][2])
+
+        newState.state[0][0][3], \
+        newState.state[4][0][3], \
+        newState.state[5][0][3], \
+        newState.state[2][0][3] = State.circle4F(newState.state[0][0][3],
+                                                 newState.state[4][0][3],
+                                                 newState.state[5][0][3],
+                                                 newState.state[2][0][3])
+
+        newState.state[1][0][3], \
+        newState.state[1][3][3], \
+        newState.state[1][3][0], \
+        newState.state[1][0][0] = State.circle4B(newState.state[1][0][3],
+                                                 newState.state[1][3][3],
+                                                 newState.state[1][3][0],
+                                                 newState.state[1][0][0])
+        newState.state[1][0][1], \
+        newState.state[1][1][3], \
+        newState.state[1][3][2], \
+        newState.state[1][2][0] = State.circle4B(newState.state[1][0][1],
+                                                 newState.state[1][1][3],
+                                                 newState.state[1][3][2],
+                                                 newState.state[1][2][0])
+        newState.state[1][0][2], \
+        newState.state[1][2][3], \
+        newState.state[1][3][1], \
+        newState.state[1][1][0] = State.circle4B(newState.state[1][0][2],
+                                                 newState.state[1][2][3],
+                                                 newState.state[1][3][1],
+                                                 newState.state[1][1][0])
+
+        newState.state[1][1][1], \
+        newState.state[1][1][2], \
+        newState.state[1][2][2], \
+        newState.state[1][2][1] = State.circle4B(newState.state[1][1][1],
+                                                 newState.state[1][1][2],
+                                                 newState.state[1][2][2],
+                                                 newState.state[1][2][1])
+
+        return newState
+
+    def FlipForward(self):
+        newState = deepcopy(self)
+        newState.state[0][0][0], \
+        newState.state[1][0][0], \
+        newState.state[5][3][3], \
+        newState.state[3][0][0] = State.circle4F(newState.state[0][0][0],
+                                                 newState.state[1][0][0],
+                                                 newState.state[5][3][3],
+                                                 newState.state[3][0][0])
+        newState.state[0][0][1], \
+        newState.state[1][0][1], \
+        newState.state[5][3][2], \
+        newState.state[3][0][1] = State.circle4F(newState.state[0][0][1],
+                                                 newState.state[1][0][1],
+                                                 newState.state[5][3][2],
+                                                 newState.state[3][0][1])
+        newState.state[0][0][2], \
+        newState.state[1][0][2], \
+        newState.state[5][3][1], \
+        newState.state[3][0][2] = State.circle4F(newState.state[0][0][2],
+                                                 newState.state[1][0][2],
+                                                 newState.state[5][3][1],
+                                                 newState.state[3][0][2])
+
+        newState.state[0][0][3], \
+        newState.state[1][0][3], \
+        newState.state[5][3][0], \
+        newState.state[3][0][3] = State.circle4F(newState.state[0][0][3],
+                                                 newState.state[1][0][3],
+                                                 newState.state[5][3][0],
+                                                 newState.state[3][0][3])
+
+        newState.state[0][1][0], \
+        newState.state[1][1][0], \
+        newState.state[5][2][3], \
+        newState.state[3][1][0] = State.circle4F(newState.state[0][1][0],
+                                                 newState.state[1][1][0],
+                                                 newState.state[5][2][3],
+                                                 newState.state[3][1][0])
+        newState.state[0][1][1], \
+        newState.state[1][1][1], \
+        newState.state[5][2][2], \
+        newState.state[3][1][1] = State.circle4F(newState.state[0][1][1],
+                                                 newState.state[1][1][1],
+                                                 newState.state[5][2][2],
+                                                 newState.state[3][1][1])
+        newState.state[0][1][2], \
+        newState.state[1][1][2], \
+        newState.state[5][2][1], \
+        newState.state[3][1][2] = State.circle4F(newState.state[0][1][2],
+                                                 newState.state[1][1][2],
+                                                 newState.state[5][2][1],
+                                                 newState.state[3][1][2])
+
+        newState.state[0][1][3], \
+        newState.state[1][1][3], \
+        newState.state[5][2][0], \
+        newState.state[3][1][3] = State.circle4F(newState.state[0][1][3],
+                                                 newState.state[1][1][3],
+                                                 newState.state[5][2][0],
+                                                 newState.state[3][1][3])
+
+        newState.state[0][2][0], \
+        newState.state[1][2][0], \
+        newState.state[5][1][3], \
+        newState.state[3][2][0] = State.circle4F(newState.state[0][2][0],
+                                                 newState.state[1][2][0],
+                                                 newState.state[5][1][3],
+                                                 newState.state[3][2][0])
+        newState.state[0][2][1], \
+        newState.state[1][2][1], \
+        newState.state[5][1][2], \
+        newState.state[3][2][1] = State.circle4F(newState.state[0][2][1],
+                                                 newState.state[1][2][1],
+                                                 newState.state[5][1][2],
+                                                 newState.state[3][2][1])
+        newState.state[0][2][2], \
+        newState.state[1][2][2], \
+        newState.state[5][1][1], \
+        newState.state[3][2][2] = State.circle4F(newState.state[0][2][2],
+                                                 newState.state[1][2][2],
+                                                 newState.state[5][1][1],
+                                                 newState.state[3][2][2])
+
+        newState.state[0][2][3], \
+        newState.state[1][2][3], \
+        newState.state[5][1][0], \
+        newState.state[3][2][3] = State.circle4F(newState.state[0][2][3],
+                                                 newState.state[1][2][3],
+                                                 newState.state[5][1][0],
+                                                 newState.state[3][2][3])
+
+        newState.state[0][3][0], \
+        newState.state[1][3][0], \
+        newState.state[5][0][3], \
+        newState.state[3][3][0] = State.circle4F(newState.state[0][3][0],
+                                                 newState.state[1][3][0],
+                                                 newState.state[5][0][3],
+                                                 newState.state[3][3][0])
+
+        newState.state[0][3][1], \
+        newState.state[1][3][1], \
+        newState.state[5][0][2], \
+        newState.state[3][3][1] = State.circle4F(newState.state[0][3][1],
+                                                 newState.state[1][3][1],
+                                                 newState.state[5][0][2],
+                                                 newState.state[3][3][1])
+
+        newState.state[0][3][2], \
+        newState.state[1][3][2], \
+        newState.state[5][0][1], \
+        newState.state[3][3][2] = State.circle4F(newState.state[0][3][2],
+                                                 newState.state[1][3][2],
+                                                 newState.state[5][0][1],
+                                                 newState.state[3][3][2])
+
+        newState.state[0][3][3], \
+        newState.state[1][3][3], \
+        newState.state[5][0][0], \
+        newState.state[3][3][3] = State.circle4F(newState.state[0][3][3],
+                                                 newState.state[1][3][3],
+                                                 newState.state[5][0][0],
+                                                 newState.state[3][3][3])
+
+        newState.state[2][0][0], \
+        newState.state[2][0][3], \
+        newState.state[2][3][3], \
+        newState.state[2][3][0] = State.circle4B(newState.state[2][0][0],
+                                                 newState.state[2][0][3],
+                                                 newState.state[2][3][3],
+                                                 newState.state[2][3][0])
+        newState.state[2][0][1], \
+        newState.state[2][1][3], \
+        newState.state[2][3][2], \
+        newState.state[2][2][0] = State.circle4B(newState.state[2][0][1],
+                                                 newState.state[2][1][3],
+                                                 newState.state[2][3][2],
+                                                 newState.state[2][2][0])
+
+        newState.state[2][0][2], \
+        newState.state[2][2][3], \
+        newState.state[2][3][1], \
+        newState.state[2][1][0] = State.circle4B(newState.state[2][0][2],
+                                                 newState.state[2][2][3],
+                                                 newState.state[2][3][1],
+                                                 newState.state[2][1][0])
+
+        newState.state[2][1][1], \
+        newState.state[2][1][2], \
+        newState.state[2][2][2], \
+        newState.state[2][2][1] = State.circle4B(newState.state[2][1][1],
+                                                 newState.state[2][1][2],
+                                                 newState.state[2][2][2],
+                                                 newState.state[2][2][1])
+
+        newState.state[4][0][0], \
+        newState.state[4][0][3], \
+        newState.state[4][3][3], \
+        newState.state[4][3][0] = State.circle4F(newState.state[4][0][0],
+                                                 newState.state[4][0][3],
+                                                 newState.state[4][3][3],
+                                                 newState.state[4][3][0])
+        newState.state[4][0][1], \
+        newState.state[4][1][3], \
+        newState.state[4][3][2], \
+        newState.state[4][2][0] = State.circle4F(newState.state[4][0][1],
+                                                 newState.state[4][1][3],
+                                                 newState.state[4][3][2],
+                                                 newState.state[4][2][0])
+
+        newState.state[4][0][2], \
+        newState.state[4][2][3], \
+        newState.state[4][3][1], \
+        newState.state[4][1][0] = State.circle4F(newState.state[4][0][2],
+                                                 newState.state[4][2][3],
+                                                 newState.state[4][3][1],
+                                                 newState.state[4][1][0])
+
+        newState.state[4][1][1], \
+        newState.state[4][1][2], \
+        newState.state[4][2][2], \
+        newState.state[4][2][1] = State.circle4F(newState.state[4][1][1],
+                                                 newState.state[4][1][2],
+                                                 newState.state[4][2][2],
+                                                 newState.state[4][2][1])
+        return newState
+
+    def FlipBackward(self):
+        newState = deepcopy(self)
+        newState.state[0][0][0], \
+        newState.state[1][0][0], \
+        newState.state[5][3][3], \
+        newState.state[3][0][0] = State.circle4B(newState.state[0][0][0],
+                                                 newState.state[1][0][0],
+                                                 newState.state[5][3][3],
+                                                 newState.state[3][0][0])
+        newState.state[0][0][1], \
+        newState.state[1][0][1], \
+        newState.state[5][3][2], \
+        newState.state[3][0][1] = State.circle4B(newState.state[0][0][1],
+                                                 newState.state[1][0][1],
+                                                 newState.state[5][3][2],
+                                                 newState.state[3][0][1])
+        newState.state[0][0][2], \
+        newState.state[1][0][2], \
+        newState.state[5][3][1], \
+        newState.state[3][0][2] = State.circle4B(newState.state[0][0][2],
+                                                 newState.state[1][0][2],
+                                                 newState.state[5][3][1],
+                                                 newState.state[3][0][2])
+
+        newState.state[0][0][3], \
+        newState.state[1][0][3], \
+        newState.state[5][3][0], \
+        newState.state[3][0][3] = State.circle4B(newState.state[0][0][3],
+                                                 newState.state[1][0][3],
+                                                 newState.state[5][3][0],
+                                                 newState.state[3][0][3])
+
+        newState.state[0][1][0], \
+        newState.state[1][1][0], \
+        newState.state[5][2][3], \
+        newState.state[3][1][0] = State.circle4B(newState.state[0][1][0],
+                                                 newState.state[1][1][0],
+                                                 newState.state[5][2][3],
+                                                 newState.state[3][1][0])
+        newState.state[0][1][1], \
+        newState.state[1][1][1], \
+        newState.state[5][2][2], \
+        newState.state[3][1][1] = State.circle4B(newState.state[0][1][1],
+                                                 newState.state[1][1][1],
+                                                 newState.state[5][2][2],
+                                                 newState.state[3][1][1])
+        newState.state[0][1][2], \
+        newState.state[1][1][2], \
+        newState.state[5][2][1], \
+        newState.state[3][1][2] = State.circle4B(newState.state[0][1][2],
+                                                 newState.state[1][1][2],
+                                                 newState.state[5][2][1],
+                                                 newState.state[3][1][2])
+
+        newState.state[0][1][3], \
+        newState.state[1][1][3], \
+        newState.state[5][2][0], \
+        newState.state[3][1][3] = State.circle4B(newState.state[0][1][3],
+                                                 newState.state[1][1][3],
+                                                 newState.state[5][2][0],
+                                                 newState.state[3][1][3])
+
+        newState.state[0][2][0], \
+        newState.state[1][2][0], \
+        newState.state[5][1][3], \
+        newState.state[3][2][0] = State.circle4B(newState.state[0][2][0],
+                                                 newState.state[1][2][0],
+                                                 newState.state[5][1][3],
+                                                 newState.state[3][2][0])
+        newState.state[0][2][1], \
+        newState.state[1][2][1], \
+        newState.state[5][1][2], \
+        newState.state[3][2][1] = State.circle4B(newState.state[0][2][1],
+                                                 newState.state[1][2][1],
+                                                 newState.state[5][1][2],
+                                                 newState.state[3][2][1])
+        newState.state[0][2][2], \
+        newState.state[1][2][2], \
+        newState.state[5][1][1], \
+        newState.state[3][2][2] = State.circle4B(newState.state[0][2][2],
+                                                 newState.state[1][2][2],
+                                                 newState.state[5][1][1],
+                                                 newState.state[3][2][2])
+
+        newState.state[0][2][3], \
+        newState.state[1][2][3], \
+        newState.state[5][1][0], \
+        newState.state[3][2][3] = State.circle4B(newState.state[0][2][3],
+                                                 newState.state[1][2][3],
+                                                 newState.state[5][1][0],
+                                                 newState.state[3][2][3])
+
+        newState.state[0][3][0], \
+        newState.state[1][3][0], \
+        newState.state[5][0][3], \
+        newState.state[3][3][0] = State.circle4B(newState.state[0][3][0],
+                                                 newState.state[1][3][0],
+                                                 newState.state[5][0][3],
+                                                 newState.state[3][3][0])
+
+        newState.state[0][3][1], \
+        newState.state[1][3][1], \
+        newState.state[5][0][2], \
+        newState.state[3][3][1] = State.circle4B(newState.state[0][3][1],
+                                                 newState.state[1][3][1],
+                                                 newState.state[5][0][2],
+                                                 newState.state[3][3][1])
+
+        newState.state[0][3][2], \
+        newState.state[1][3][2], \
+        newState.state[5][0][1], \
+        newState.state[3][3][2] = State.circle4B(newState.state[0][3][2],
+                                                 newState.state[1][3][2],
+                                                 newState.state[5][0][1],
+                                                 newState.state[3][3][2])
+
+        newState.state[0][3][3], \
+        newState.state[1][3][3], \
+        newState.state[5][0][0], \
+        newState.state[3][3][3] = State.circle4B(newState.state[0][3][3],
+                                                 newState.state[1][3][3],
+                                                 newState.state[5][0][0],
+                                                 newState.state[3][3][3])
+
+        newState.state[2][0][0], \
+        newState.state[2][0][3], \
+        newState.state[2][3][3], \
+        newState.state[2][3][0] = State.circle4F(newState.state[2][0][0],
+                                                 newState.state[2][0][3],
+                                                 newState.state[2][3][3],
+                                                 newState.state[2][3][0])
+        newState.state[2][0][1], \
+        newState.state[2][1][3], \
+        newState.state[2][3][2], \
+        newState.state[2][2][0] = State.circle4F(newState.state[2][0][1],
+                                                 newState.state[2][1][3],
+                                                 newState.state[2][3][2],
+                                                 newState.state[2][2][0])
+
+        newState.state[2][0][2], \
+        newState.state[2][2][3], \
+        newState.state[2][3][1], \
+        newState.state[2][1][0] = State.circle4F(newState.state[2][0][2],
+                                                 newState.state[2][2][3],
+                                                 newState.state[2][3][1],
+                                                 newState.state[2][1][0])
+
+        newState.state[2][1][1], \
+        newState.state[2][1][2], \
+        newState.state[2][2][2], \
+        newState.state[2][2][1] = State.circle4F(newState.state[2][1][1],
+                                                 newState.state[2][1][2],
+                                                 newState.state[2][2][2],
+                                                 newState.state[2][2][1])
+
+        newState.state[4][0][0], \
+        newState.state[4][0][3], \
+        newState.state[4][3][3], \
+        newState.state[4][3][0] = State.circle4B(newState.state[4][0][0],
+                                                 newState.state[4][0][3],
+                                                 newState.state[4][3][3],
+                                                 newState.state[4][3][0])
+        newState.state[4][0][1], \
+        newState.state[4][1][3], \
+        newState.state[4][3][2], \
+        newState.state[4][2][0] = State.circle4B(newState.state[4][0][1],
+                                                 newState.state[4][1][3],
+                                                 newState.state[4][3][2],
+                                                 newState.state[4][2][0])
+
+        newState.state[4][0][2], \
+        newState.state[4][2][3], \
+        newState.state[4][3][1], \
+        newState.state[4][1][0] = State.circle4B(newState.state[4][0][2],
+                                                 newState.state[4][2][3],
+                                                 newState.state[4][3][1],
+                                                 newState.state[4][1][0])
+
+        newState.state[4][1][1], \
+        newState.state[4][1][2], \
+        newState.state[4][2][2], \
+        newState.state[4][2][1] = State.circle4B(newState.state[4][1][1],
+                                                 newState.state[4][1][2],
+                                                 newState.state[4][2][2],
+                                                 newState.state[4][2][1])
+        return newState
+
+    def FlipRight(self):
+        newState = deepcopy(self)
+        newState.state[1][0][0], \
+        newState.state[2][3][0], \
+        newState.state[3][3][3], \
+        newState.state[4][0][3] = State.circle4F(newState.state[1][0][0],
+                                                 newState.state[2][3][0],
+                                                 newState.state[3][3][3],
+                                                 newState.state[4][0][3])
+        newState.state[1][0][1], \
+        newState.state[2][2][0], \
+        newState.state[3][3][2], \
+        newState.state[4][1][3] = State.circle4F(newState.state[1][0][1],
+                                                 newState.state[2][2][0],
+                                                 newState.state[3][3][2],
+                                                 newState.state[4][1][3])
+        newState.state[1][0][2], \
+        newState.state[2][1][0], \
+        newState.state[3][3][1], \
+        newState.state[4][2][3] = State.circle4F(newState.state[1][0][2],
+                                                 newState.state[2][1][0],
+                                                 newState.state[3][3][1],
+                                                 newState.state[4][2][3])
+
+        newState.state[1][0][3], \
+        newState.state[2][0][0], \
+        newState.state[3][3][0], \
+        newState.state[4][3][3] = State.circle4F(newState.state[1][0][3],
+                                                 newState.state[2][0][0],
+                                                 newState.state[3][3][0],
+                                                 newState.state[4][3][3])
+        newState.state[1][1][0], \
+        newState.state[2][3][1], \
+        newState.state[3][2][3], \
+        newState.state[4][0][2] = State.circle4F(newState.state[1][1][0],
+                                                 newState.state[2][3][1],
+                                                 newState.state[3][2][3],
+                                                 newState.state[4][0][2])
+        newState.state[1][1][1], \
+        newState.state[2][2][1], \
+        newState.state[3][2][2], \
+        newState.state[4][1][2] = State.circle4F(newState.state[1][1][1],
+                                                 newState.state[2][2][1],
+                                                 newState.state[3][2][2],
+                                                 newState.state[4][1][2])
+        newState.state[1][1][2], \
+        newState.state[2][1][1], \
+        newState.state[3][2][1], \
+        newState.state[4][2][2] = State.circle4F(newState.state[1][1][2],
+                                                 newState.state[2][1][1],
+                                                 newState.state[3][2][1],
+                                                 newState.state[4][2][2])
+
+        newState.state[1][1][3], \
+        newState.state[2][0][1], \
+        newState.state[3][2][0], \
+        newState.state[4][3][2] = State.circle4F(newState.state[1][1][3],
+                                                 newState.state[2][0][1],
+                                                 newState.state[3][2][0],
+                                                 newState.state[4][3][2])
+
+        newState.state[1][2][0], \
+        newState.state[2][3][2], \
+        newState.state[3][1][3], \
+        newState.state[4][0][1] = State.circle4F(newState.state[1][2][0],
+                                                 newState.state[2][3][2],
+                                                 newState.state[3][1][3],
+                                                 newState.state[4][0][1])
+        newState.state[1][2][1], \
+        newState.state[2][2][2], \
+        newState.state[3][1][2], \
+        newState.state[4][1][1] = State.circle4F(newState.state[1][2][1],
+                                                 newState.state[2][2][2],
+                                                 newState.state[3][1][2],
+                                                 newState.state[4][1][1])
+        newState.state[1][2][2], \
+        newState.state[2][1][2], \
+        newState.state[3][1][1], \
+        newState.state[4][2][1] = State.circle4F(newState.state[1][2][2],
+                                                 newState.state[2][1][2],
+                                                 newState.state[3][1][1],
+                                                 newState.state[4][2][1])
+
+        newState.state[1][2][3], \
+        newState.state[2][0][2], \
+        newState.state[3][1][0], \
+        newState.state[4][3][1] = State.circle4F(newState.state[1][2][3],
+                                                 newState.state[2][0][2],
+                                                 newState.state[3][1][0],
+                                                 newState.state[4][3][1])
+
+        newState.state[1][3][0], \
+        newState.state[2][3][3], \
+        newState.state[3][0][3], \
+        newState.state[4][0][0] = State.circle4F(newState.state[1][3][0],
+                                                 newState.state[2][3][3],
+                                                 newState.state[3][0][3],
+                                                 newState.state[4][0][0])
+
+        newState.state[1][3][1], \
+        newState.state[2][2][3], \
+        newState.state[3][0][2], \
+        newState.state[4][1][0] = State.circle4F(newState.state[1][3][1],
+                                                 newState.state[2][2][3],
+                                                 newState.state[3][0][2],
+                                                 newState.state[4][1][0])
+        newState.state[1][3][2], \
+        newState.state[2][1][3], \
+        newState.state[3][0][1], \
+        newState.state[4][2][0] = State.circle4F(newState.state[1][3][2],
+                                                 newState.state[2][1][3],
+                                                 newState.state[3][0][1],
+                                                 newState.state[4][2][0])
+
+        newState.state[1][3][3], \
+        newState.state[2][0][3], \
+        newState.state[3][0][0], \
+        newState.state[4][3][0] = State.circle4F(newState.state[1][3][3],
+                                                 newState.state[2][0][3],
+                                                 newState.state[3][0][0],
+                                                 newState.state[4][3][0])
+
+        newState.state[0][0][0], \
+        newState.state[0][0][3], \
+        newState.state[0][3][3], \
+        newState.state[0][3][0] = State.circle4B(newState.state[0][0][0],
+                                                 newState.state[0][0][3],
+                                                 newState.state[0][3][3],
+                                                 newState.state[0][3][0])
+        newState.state[0][0][1], \
+        newState.state[0][1][3], \
+        newState.state[0][3][2], \
+        newState.state[0][2][0] = State.circle4B(newState.state[0][0][1],
+                                                 newState.state[0][1][3],
+                                                 newState.state[0][3][2],
+                                                 newState.state[0][2][0])
+
+        newState.state[0][0][2], \
+        newState.state[0][2][3], \
+        newState.state[0][3][1], \
+        newState.state[0][1][0] = State.circle4B(newState.state[0][0][2],
+                                                 newState.state[0][2][3],
+                                                 newState.state[0][3][1],
+                                                 newState.state[0][1][0])
+
+        newState.state[0][1][1], \
+        newState.state[0][1][2], \
+        newState.state[0][2][2], \
+        newState.state[0][2][1] = State.circle4B(newState.state[0][1][1],
+                                                 newState.state[0][1][2],
+                                                 newState.state[0][2][2],
+                                                 newState.state[0][2][1])
+
+        newState.state[5][0][0], \
+        newState.state[5][0][3], \
+        newState.state[5][3][3], \
+        newState.state[5][3][0] = State.circle4F(newState.state[5][0][0],
+                                                 newState.state[5][0][3],
+                                                 newState.state[5][3][3],
+                                                 newState.state[5][3][0])
+        newState.state[5][0][1], \
+        newState.state[5][1][3], \
+        newState.state[5][3][2], \
+        newState.state[5][2][0] = State.circle4F(newState.state[5][0][1],
+                                                 newState.state[5][1][3],
+                                                 newState.state[5][3][2],
+                                                 newState.state[5][2][0])
+
+        newState.state[5][0][2], \
+        newState.state[5][2][3], \
+        newState.state[5][3][1], \
+        newState.state[5][1][0] = State.circle4F(newState.state[5][0][2],
+                                                 newState.state[5][2][3],
+                                                 newState.state[5][3][1],
+                                                 newState.state[5][1][0])
+
+        newState.state[5][1][1], \
+        newState.state[5][1][2], \
+        newState.state[5][2][2], \
+        newState.state[5][2][1] = State.circle4F(newState.state[5][1][1],
+                                                 newState.state[5][1][2],
+                                                 newState.state[5][2][2],
+                                                 newState.state[5][2][1])
+
+        return newState
+
+    def FlipLeft(self):
+        newState = deepcopy(self)
+        newState.state[1][0][0], \
+        newState.state[2][3][0], \
+        newState.state[3][3][3], \
+        newState.state[4][0][3] = State.circle4B(newState.state[1][0][0],
+                                                 newState.state[2][3][0],
+                                                 newState.state[3][3][3],
+                                                 newState.state[4][0][3])
+        newState.state[1][0][1], \
+        newState.state[2][2][0], \
+        newState.state[3][3][2], \
+        newState.state[4][1][3] = State.circle4B(newState.state[1][0][1],
+                                                 newState.state[2][2][0],
+                                                 newState.state[3][3][2],
+                                                 newState.state[4][1][3])
+        newState.state[1][0][2], \
+        newState.state[2][1][0], \
+        newState.state[3][3][1], \
+        newState.state[4][2][3] = State.circle4B(newState.state[1][0][2],
+                                                 newState.state[2][1][0],
+                                                 newState.state[3][3][1],
+                                                 newState.state[4][2][3])
+
+        newState.state[1][0][3], \
+        newState.state[2][0][0], \
+        newState.state[3][3][0], \
+        newState.state[4][3][3] = State.circle4B(newState.state[1][0][3],
+                                                 newState.state[2][0][0],
+                                                 newState.state[3][3][0],
+                                                 newState.state[4][3][3])
+        newState.state[1][1][0], \
+        newState.state[2][3][1], \
+        newState.state[3][2][3], \
+        newState.state[4][0][2] = State.circle4B(newState.state[1][1][0],
+                                                 newState.state[2][3][1],
+                                                 newState.state[3][2][3],
+                                                 newState.state[4][0][2])
+        newState.state[1][1][1], \
+        newState.state[2][2][1], \
+        newState.state[3][2][2], \
+        newState.state[4][1][2] = State.circle4B(newState.state[1][1][1],
+                                                 newState.state[2][2][1],
+                                                 newState.state[3][2][2],
+                                                 newState.state[4][1][2])
+        newState.state[1][1][2], \
+        newState.state[2][1][1], \
+        newState.state[3][2][1], \
+        newState.state[4][2][2] = State.circle4B(newState.state[1][1][2],
+                                                 newState.state[2][1][1],
+                                                 newState.state[3][2][1],
+                                                 newState.state[4][2][2])
+
+        newState.state[1][1][3], \
+        newState.state[2][0][1], \
+        newState.state[3][2][0], \
+        newState.state[4][3][2] = State.circle4B(newState.state[1][1][3],
+                                                 newState.state[2][0][1],
+                                                 newState.state[3][2][0],
+                                                 newState.state[4][3][2])
+
+        newState.state[1][2][0], \
+        newState.state[2][3][2], \
+        newState.state[3][1][3], \
+        newState.state[4][0][1] = State.circle4B(newState.state[1][2][0],
+                                                 newState.state[2][3][2],
+                                                 newState.state[3][1][3],
+                                                 newState.state[4][0][1])
+        newState.state[1][2][1], \
+        newState.state[2][2][2], \
+        newState.state[3][1][2], \
+        newState.state[4][1][1] = State.circle4B(newState.state[1][2][1],
+                                                 newState.state[2][2][2],
+                                                 newState.state[3][1][2],
+                                                 newState.state[4][1][1])
+        newState.state[1][2][2], \
+        newState.state[2][1][2], \
+        newState.state[3][1][1], \
+        newState.state[4][2][1] = State.circle4B(newState.state[1][2][2],
+                                                 newState.state[2][1][2],
+                                                 newState.state[3][1][1],
+                                                 newState.state[4][2][1])
+
+        newState.state[1][2][3], \
+        newState.state[2][0][2], \
+        newState.state[3][1][0], \
+        newState.state[4][3][1] = State.circle4B(newState.state[1][2][3],
+                                                 newState.state[2][0][2],
+                                                 newState.state[3][1][0],
+                                                 newState.state[4][3][1])
+
+        newState.state[1][3][0], \
+        newState.state[2][3][3], \
+        newState.state[3][0][3], \
+        newState.state[4][0][0] = State.circle4B(newState.state[1][3][0],
+                                                 newState.state[2][3][3],
+                                                 newState.state[3][0][3],
+                                                 newState.state[4][0][0])
+
+        newState.state[1][3][1], \
+        newState.state[2][2][3], \
+        newState.state[3][0][2], \
+        newState.state[4][1][0] = State.circle4B(newState.state[1][3][1],
+                                                 newState.state[2][2][3],
+                                                 newState.state[3][0][2],
+                                                 newState.state[4][1][0])
+        newState.state[1][3][2], \
+        newState.state[2][1][3], \
+        newState.state[3][0][1], \
+        newState.state[4][2][0] = State.circle4B(newState.state[1][3][2],
+                                                 newState.state[2][1][3],
+                                                 newState.state[3][0][1],
+                                                 newState.state[4][2][0])
+
+        newState.state[1][3][3], \
+        newState.state[2][0][3], \
+        newState.state[3][0][0], \
+        newState.state[4][3][0] = State.circle4B(newState.state[1][3][3],
+                                                 newState.state[2][0][3],
+                                                 newState.state[3][0][0],
+                                                 newState.state[4][3][0])
+
+        newState.state[0][0][0], \
+        newState.state[0][0][3], \
+        newState.state[0][3][3], \
+        newState.state[0][3][0] = State.circle4F(newState.state[0][0][0],
+                                                 newState.state[0][0][3],
+                                                 newState.state[0][3][3],
+                                                 newState.state[0][3][0])
+        newState.state[0][0][1], \
+        newState.state[0][1][3], \
+        newState.state[0][3][2], \
+        newState.state[0][2][0] = State.circle4F(newState.state[0][0][1],
+                                                 newState.state[0][1][3],
+                                                 newState.state[0][3][2],
+                                                 newState.state[0][2][0])
+
+        newState.state[0][0][2], \
+        newState.state[0][2][3], \
+        newState.state[0][3][1], \
+        newState.state[0][1][0] = State.circle4F(newState.state[0][0][2],
+                                                 newState.state[0][2][3],
+                                                 newState.state[0][3][1],
+                                                 newState.state[0][1][0])
+
+        newState.state[0][1][1], \
+        newState.state[0][1][2], \
+        newState.state[0][2][2], \
+        newState.state[0][2][1] = State.circle4F(newState.state[0][1][1],
+                                                 newState.state[0][1][2],
+                                                 newState.state[0][2][2],
+                                                 newState.state[0][2][1])
+
+        newState.state[5][0][0], \
+        newState.state[5][0][3], \
+        newState.state[5][3][3], \
+        newState.state[5][3][0] = State.circle4B(newState.state[5][0][0],
+                                                 newState.state[5][0][3],
+                                                 newState.state[5][3][3],
+                                                 newState.state[5][3][0])
+        newState.state[5][0][1], \
+        newState.state[5][1][3], \
+        newState.state[5][3][2], \
+        newState.state[5][2][0] = State.circle4B(newState.state[5][0][1],
+                                                 newState.state[5][1][3],
+                                                 newState.state[5][3][2],
+                                                 newState.state[5][2][0])
+
+        newState.state[5][0][2], \
+        newState.state[5][2][3], \
+        newState.state[5][3][1], \
+        newState.state[5][1][0] = State.circle4B(newState.state[5][0][2],
+                                                 newState.state[5][2][3],
+                                                 newState.state[5][3][1],
+                                                 newState.state[5][1][0])
+
+        newState.state[5][1][1], \
+        newState.state[5][1][2], \
+        newState.state[5][2][2], \
+        newState.state[5][2][1] = State.circle4B(newState.state[5][1][1],
+                                                 newState.state[5][1][2],
+                                                 newState.state[5][2][2],
+                                                 newState.state[5][2][1])
+
+        return newState
+
+    def switchIndexes(self, num_of_rotate):
+        newState = deepcopy(self)
+        for j in range(6):
+            for k in range(num_of_rotate[j]):
+                newState.state[j][0][3], \
+                newState.state[j][3][3], \
+                newState.state[j][3][0], \
+                newState.state[j][0][0] = State.circle4F(newState.state[j][0][3],
+                                                         newState.state[j][3][3],
+                                                         newState.state[j][3][0],
+                                                         newState.state[j][0][0])
+                newState.state[j][0][1], \
+                newState.state[j][1][3], \
+                newState.state[j][3][2], \
+                newState.state[j][2][0] = State.circle4F(newState.state[j][0][1],
+                                                         newState.state[j][1][3],
+                                                         newState.state[j][3][2],
+                                                         newState.state[j][2][0])
+                newState.state[j][0][2], \
+                newState.state[j][2][3], \
+                newState.state[j][3][1], \
+                newState.state[j][1][0] = State.circle4F(newState.state[j][0][2],
+                                                         newState.state[j][2][3],
+                                                         newState.state[j][3][1],
+                                                         newState.state[j][1][0])
+
+                newState.state[j][1][1], \
+                newState.state[j][1][2], \
+                newState.state[j][2][2], \
+                newState.state[j][2][1] = State.circle4F(newState.state[j][1][1],
+                                                         newState.state[j][1][2],
+                                                         newState.state[j][2][2],
+                                                         newState.state[j][2][1])
+
+        return newState

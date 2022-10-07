@@ -38,11 +38,12 @@ class Five:
         for row, i in zip(range(5), range(self.pt1[1] + self.length, self.pt2[1], self.length * 2)):
             for col, j in zip(range(5), range(self.pt1[0] + self.length, self.pt2[0], self.length * 2)):
                 self.h[row][col] = frame[i, j][0]
-                print(self.h)
+                # print(self.h)
                 self.s[row][col] = frame[i, j][1]
         return self.h
 
     def standard_deviation(self, frame):
+        frame = cv.GaussianBlur(frame, (101,101), 0)
         pt1 = (self.pt1[0] + (self.length * 4), self.pt1[1] + (self.length * 4))
         pt2 = (self.pt1[0] + (self.length * 6), self.pt1[1] + (self.length * 6))
         hue_sum = 0
