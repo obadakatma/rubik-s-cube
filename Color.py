@@ -2,12 +2,12 @@ from enum import Enum
 
 
 class Color(Enum):
-    Indifference = 6
-    ORANGE = 0
-    RED = 1
-    YELLOW = 2
-    WHITE = 3
-    GREEN = 4
+    Indifference = 0
+    ORANGE = 2
+    RED = 4
+    YELLOW = 6
+    WHITE = 1
+    GREEN = 3
     BLUE = 5
 
     def __repr__(self):

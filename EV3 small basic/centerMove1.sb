@@ -7,5 +7,4 @@ Motor.Move(port_LarC,-40,x,"True")
 x= 98
 Motor.Move(port_LarC,40,x,"True")
 Motor.Move(port_MidC,30,80,"True") 
-File.WriteLine("C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\attempt.txt",1,"done3")
 Program.End()

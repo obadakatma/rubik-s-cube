@@ -1,4 +1,5 @@
 import os
+import socket
 import time
 
 import numpy as np
@@ -12,10 +13,9 @@ import ThreeByThree as Three
 import ThreeByThreeCubeMoves as Move
 from object_detector import *
 
-
-# host, port = "127.0.0.1", 25001
-# sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# sock.connect((host, port))
+host, port = "127.0.0.1", 25001
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((host, port))
 
 
 def rotate(image, Angle, rotPoint=None):
@@ -30,7 +30,7 @@ def rotate(image, Angle, rotPoint=None):
     return cv.warpAffine(image, rotMat, dimensions)
 
 
-def nothing():
+def nothing(x):
     pass
 
 
@@ -53,57 +53,54 @@ while True:
     capture.set(10, 255)
     capture.set(12, 255)
     cv.imshow('Main', frame)
-    if cv.waitKey(1) == ord('s'):
+    key = cv.waitKey(1)
+    if key == ord('s'):
         print('Start!')
         time.sleep(0.5)
         keyNum = 1
+    elif key == ord(' '):
+        break
     if keyNum == 1:
         if i == 0:
             time.sleep(3)
             cv.imwrite(f"photos/{i}.png", frame)
             print("done0")
-            os.startfile(r"C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\centerMove1.exe")
+            os.startfile(r"EV3 small basic\centerMove1.exe")
             time.sleep(7)
             i += 1
         elif i == 1:
             cv.imwrite(f"photos/{i}.png", frame)
             print("done1")
-            os.startfile(r"C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\leftMove.exe")
+            os.startfile(r"EV3 small basic\leftMove.exe")
             time.sleep(6)
             i += 1
 
         elif i == 2:
             cv.imwrite(f"photos/{i}.png", frame)
             print("done2")
-            os.startfile(r"C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\leftMove.exe")
+            os.startfile(r"EV3 small basic\leftMove.exe")
             time.sleep(7)
             i += 1
 
         elif i == 3:
             cv.imwrite(f"photos/{i}.png", frame)
             print("done3")
-            os.startfile(r"C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\leftMove.exe")
+            os.startfile(r"EV3 small basic\leftMove.exe")
             time.sleep(8)
             i += 1
 
         elif i == 4:
             cv.imwrite(f"photos/{i}.png", frame)
             print("done4")
-            os.startfile(r"C:\Users\obada\Desktop\Rubik'sCubeSolverPROJECT\EV3 small basic\centerMove1.exe")
+            os.startfile(r"EV3 small basic\centerMove1.exe")
             time.sleep(6)
             i += 1
 
         elif i == 5:
             cv.imwrite(f"photos/{i}.png", frame)
             print("done5")
-            i += 1
-
-        elif i == 6:
             break
-    elif i == 7:
-        break
-    if cv.waitKey(32) & 0xFF == ord(' '):
-        break
+
 cv.destroyWindow("Main")
 cv.destroyWindow("CameraLight")
 # ###############################################################################################################################
@@ -155,15 +152,9 @@ for i in range(6):
 
     cv.imshow(f"{i}", rotated)
 
-# tes = ""
-# for i in range(6):
-#     for j in range(3):
-#         for k in range(3):
-#             tes = tes + str(Move.test2[i][j][k].value)
-
-# sock.sendall(tes.encode("UTF-8"))
 maximum = max(std)
 print(maximum)
+
 for i in range(6):
     img = cv.imread(f"photos/{i}.png")
 
@@ -225,10 +216,50 @@ for i in range(6):
         print(Move1.test2)
 
     cv.imshow(f"{i}", rotated)
-# state = Move.State(0, Move.test2)
-# state = state.switchIndexes(rotateNum)
-# for line in state.state:
-#     for line1 in line:
-#         print(line1)
+
+if maximum <= 20:
+    state = Move.State(0, Move.test2)
+    state = state.switchIndexes(rotateNum)
+    for line in state.state:
+        for line1 in line:
+            print(line1)
+
+    tes = ""
+    for n in range(6):
+        for j in range(3):
+            for k in range(3):
+                tes = tes + str(state.state[n][j][k].value)
+
+    sock.sendall(tes.encode("UTF-8"))
+
+elif 5 < maximum <= 27:
+    state = Move2.State(0, Move2.test2)
+    state = state.switchIndexes(rotateNum)
+    for line in state.state:
+        for line1 in line:
+            print(line1)
+
+    tes = ""
+    for n in range(6):
+        for j in range(5):
+            for k in range(5):
+                tes = tes + str(state.state[n][j][k].value)
+
+    sock.sendall(tes.encode("UTF-8"))
+
+elif 27 <= maximum:
+    state = Move1.State(0, Move1.test2)
+    state = state.switchIndexes(rotateNum)
+    for line in state.state:
+        for line1 in line:
+            print(line1)
+
+    tes = ""
+    for n in range(6):
+        for j in range(4):
+            for k in range(4):
+                tes = tes + str(state.state[n][j][k].value)
+
+    sock.sendall(tes.encode("UTF-8"))
 
 cv.waitKey(0)
